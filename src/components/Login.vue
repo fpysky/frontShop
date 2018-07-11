@@ -27,23 +27,35 @@
         email: null,
         password: null,
         error: false,
-        errors: {}
+        errors: {},
+        geetest_challenge: '',
+        geetest_validate: '',
+        geetest_seccode: '',
+        geetest_status:false,
       }
     },
-    created(){
-      this.getGt(function(gt){
-        gt.appendTo('#gt');
-      });
-    },
     mounted(){
-      // console.log(gtInit);
+      this.initGt();
     },
     methods: {
+      initGt(){
+        let app = this;
+        document.getElementById('gt').innerHTML = '';
+        this.getGt(function(gt){
+          gt.appendTo('#gt');
+          gt.onSuccess(func => {
+            app.geetest_challenge = document.getElementsByTagName('input')['geetest_challenge'].value;
+            app.geetest_validate = document.getElementsByTagName('input')['geetest_validate'].value;
+            app.geetest_seccode = document.getElementsByTagName('input')['geetest_seccode'].value;
+            app.login();
+          });
+          gt.onError(func => {});
+        });
+      },
       getGt(func){
         this.$http.post('geetest_api_v1',{}).then(res => {
-          console.log(res);
           let data = res.data;
-          console.log(data,'aa');
+          this.geetest_status = data.status;
           initGeetest({
               // 以下 4 个配置参数为必须，不能缺少
               gt: data.gt,
@@ -63,12 +75,21 @@
         this.$auth.login({
             params: {
               email: app.email,
-              password: app.password
+              password: app.password,
+              geetest_challenge: app.geetest_challenge,
+              geetest_validate: app.geetest_validate,
+              geetest_seccode: app.geetest_seccode,
+              geetest_status: app.geetest_status
             }, 
             success: function () {},
             error: function (resp) {
+              // if(resp.response.data.code == 422){
+
+              // }
               app.error = true;
               app.errors = resp.response.data.error;
+              console.log(resp.response.data,'aaa');
+              app.initGt();
             },
             rememberMe: true,
             redirect: '/dashboard',
