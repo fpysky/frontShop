@@ -13,6 +13,7 @@
                         <router-link :to="{ name: 'register' }">注册</router-link>
                     </li>
                     <li v-if="$auth.check()" class="pull-right">
+                        <a href="#" v-text="$auth.user().name"></a>
                         <a href="#" @click.prevent="$auth.logout()">退出</a>
                     </li>
                 </ul>
@@ -23,3 +24,18 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    data(){
+        return {
+            user:'',
+        }
+    },
+    created(){
+        setTimeout(func => {
+            console.log(this.$auth.user())
+        },40000);
+        
+    }
+}
+</script>
