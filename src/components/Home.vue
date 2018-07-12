@@ -23,6 +23,7 @@
         <ul class="home-category">
             <li class="home-category-item">
                 <a href="" class="home-category-link">手机</a>
+                <div class="home-category-child"></div>
             </li>
             <li class="home-category-item">
                 <a href="" class="home-category-link">智能设备</a>
@@ -141,11 +142,26 @@ export default {
         text-align: -webkit-match-parent;
         list-style-type: none;
     }
+    .index-banner .home-category .home-category-item:hover a{
+        background-color:#fff;
+    }
     .index-banner .home-category .home-category-item .home-category-link{
         display: block;
         color: #333;
         padding: 0 30px;
         height: 100%;
+        transition:all .4s;
+    }
+    .index-banner .home-category .home-category-item .home-category-child{
+        display: none;
+        position: absolute;
+        height: 480px;
+        left: 244px;
+        top: 0;
+        background-color: #fff;
+        white-space: nowrap;
+        font-size: 0;
+        box-shadow: 1px 1px 2px rgba(0,0,0,.1);
     }
 </style>
 
