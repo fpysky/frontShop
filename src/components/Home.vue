@@ -16,7 +16,36 @@
             <div class="index-banner-box" style="background-color:#F56C6C">
                 <img src="./../assets/banner5.jpg" alt="">
             </div>
+            <div class="index-banner-box" style="background-color:#F56C6C">
+                <img src="./../assets/banner6.jpg" alt="">
+            </div>
         </div>
+        <ul class="home-category">
+            <li class="home-category-item">
+                <a href="" class="home-category-link">手机</a>
+            </li>
+            <li class="home-category-item">
+                <a href="" class="home-category-link">智能设备</a>
+            </li>
+            <li class="home-category-item">
+                <a href="" class="home-category-link">游戏设备</a>
+            </li>
+            <li class="home-category-item">
+                <a href="" class="home-category-link">数码影音</a>
+            </li>
+            <li class="home-category-item">
+                <a href="" class="home-category-link">手机周边</a>
+            </li>
+            <li class="home-category-item">
+                <a href="" class="home-category-link">生活周边</a>
+            </li>
+            <li class="home-category-item">
+                <a href="" class="home-category-link">个护健康</a>
+            </li>
+            <li class="home-category-item">
+                <a href="" class="home-category-link">居家用品</a>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -27,7 +56,7 @@ export default {
     methods:{
         activeBanner(){
             let t = '';
-            let timeOut = 4000;
+            let timeOut = 5000;
             let index = 1;
             let indexBannerBox = document.getElementsByClassName('index-banner-box');
             function moveFunc(){
@@ -37,7 +66,7 @@ export default {
                         indexBannerBox[i].classList.remove('banner-active');
                     }
                 }
-                if(index != 4){
+                if(index != 5){
                     index++;
                 }else{
                     index = 0;
@@ -62,6 +91,7 @@ export default {
     .index-banner{
         width:100%;
         height:480px;
+        position: relative;
     }
     .index-banner .index-banner-content{
         width:100%;
@@ -86,6 +116,36 @@ export default {
     .index-banner .index-banner-content .banner-active{
         z-index:2;
         opacity:1;
+    }
+    .index-banner .home-category{
+        background-color: rgba(248,247,247,.8);
+        position: absolute;
+        left: 50%;
+        top: 0;
+        padding:0;
+        margin-left: -620px;
+        padding-top: 12px;
+        height: 480px;
+        width: 244px;
+        background-color: rgba(248,247,247,.8);
+        background-color: #f8f7f7\9;
+        z-index: 3;
+
+    }
+    .index-banner .home-category .home-category-item{
+        height: 57px;
+        line-height: 57px;
+        background-color: transparent;
+        transition: all .5s;
+        display: list-item;
+        text-align: -webkit-match-parent;
+        list-style-type: none;
+    }
+    .index-banner .home-category .home-category-item .home-category-link{
+        display: block;
+        color: #333;
+        padding: 0 30px;
+        height: 100%;
     }
 </style>
 

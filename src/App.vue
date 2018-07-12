@@ -4,9 +4,9 @@
             <div class="header-logo" id="header-logo">
                 <a href="/" class="header-logo-img"></a>
             </div>
-            <div class="header-user" @mouseover="headerLogoMouseover" @mouseout="headerLogoMouseout">
+            <div class="header-user" id="header-user">
                 <div class="header-user-img">
-                    <router-link v-if="$auth.check()" v-text="$auth.user().name" :to="{ name: 'userCenter' }"></router-link>
+                    <!-- <router-link v-if="$auth.check()" v-text="$auth.user().name" :to="{ name: 'userCenter' }"></router-link> -->
                     <img class="header-user-avatar" src="./assets/header-user-avatar.jpg" alt="">
                 </div>
                 <div class="header-user-box"></div>
@@ -42,6 +42,8 @@
                 <li><a href="">家居生活</a></li>
                 <li><a href="">服务</a></li>
                 <li><a href="">专卖店</a></li>
+                <li><a href="">Flyme</a></li>
+                <li><a href="">社区</a></li>
             </ul>
         </div>
         <div>
@@ -50,35 +52,26 @@
     </div>
 </template>
 <script>
+import $ from 'jQuery'
 export default {
-    data(){
-        return {
-            user:'',
-        }
-    },
-    created(){
-        setTimeout(func => {
-            console.log(this.$auth.user())
-        },40000);
-        
+    mounted(){
+        this.headerUserTrigger();
     },
     methods:{
-        headerLogoMouseover(){
-            let trigger = document.getElementById('header-user-trigger');
-
-            if(trigger.style.display == 'none'){
-                trigger.style.display = 'block';
-            }else{
-                trigger.style.display = 'none';
-            }
-        },
-        headerLogoMouseout(){
-            document.getElementById('header-user-trigger').style.display = 'none';
+        headerUserTrigger(){
+            $('#header-user').hover(function(){
+                $('#header-user-trigger').show(400);
+            },function(){
+                $('#header-user-trigger').hide(400);
+            });
         },
     },
 }
 </script>
 <style>
+    a,a:hover{
+        text-decoration: none;
+    }
     .header-wrap{
         width:68%;
         height:82px;
@@ -142,6 +135,10 @@ export default {
         padding: 15px 0;
         margin-left: -48px;
         box-shadow: 0 0 5px rgba(0,0,0,.1);
+    }
+    .header-wrap .header-user .header-user-trigger .header-user-dropdown:after{
+        top:-5px;
+        border-bottom-color: #fff;
     }
     .header-wrap .header-user .header-user-trigger .header-user-dropdown li:first-child{
         margin-top: 0 !important;

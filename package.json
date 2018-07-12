@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@websanova/vue-auth": "^2.21.14-beta",
+    "animate.css": "^3.6.1",
     "axios": "^0.18.0",
     "jquery": "^3.3.1",
     "vue": "^2.5.2",
