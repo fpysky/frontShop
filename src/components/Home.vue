@@ -23,7 +23,11 @@
         <ul class="home-category">
             <li class="home-category-item">
                 <a href="" class="home-category-link">手机</a>
-                <div class="home-category-child"></div>
+                <div class="home-category-child">
+                    <div class="home-category-child-list">
+
+                    </div>
+                </div>
             </li>
             <li class="home-category-item">
                 <a href="" class="home-category-link">智能设备</a>
@@ -153,7 +157,7 @@ export default {
         transition:all .4s;
     }
     .index-banner .home-category .home-category-item .home-category-child{
-        display: none;
+        display: block;
         position: absolute;
         height: 480px;
         left: 244px;
@@ -162,6 +166,13 @@ export default {
         white-space: nowrap;
         font-size: 0;
         box-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    }
+    .index-banner .home-category .home-category-item .home-category-child .home-category-child-list{
+        display: inline-block;
+        vertical-align: top;
+        margin: 15px 28px 15px 25px;
+        width: 320px;
+        height: 450px;
     }
 </style>
 
