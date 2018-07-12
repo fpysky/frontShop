@@ -1,26 +1,21 @@
 <template>
-    <div class="banner-box">
-      
-        <form class="main-form" autocomplete="off" @submit.prevent="login" method="post">
+    <div>
+        <div class="alert alert-danger" v-if="error">
+            <p v-for="item in errors" v-text="item[0]"></p>
+        </div>
+        <form autocomplete="off" @submit.prevent="login" method="post">
             <div class="form-group">
-              <h4 style="text-align:center;">登陆</h4>
+                <label for="email">邮箱</label>
+                <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
             </div>
-            <div class="alert alert-danger" v-if="error && errors.errors">
-                <span class="help-block" v-if="error && errors.errors">{{ errors.errors[0] }}</span>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" class="form-control" v-model="password" required>
             </div>
-            <div class="form-group" v-bind:class="{ 'has-error': error && errors.email }">
-                <input type="email" id="email" class="form-control" placeholder="邮箱" v-model="email" required>
-                <span class="help-block" v-if="error && errors.email">{{ errors.name[0] }}</span>
-            </div>
-            <div class="form-group" v-bind:class="{ 'has-error': error && errors.password }">
-                <input type="password" id="password" class="form-control" placeholder="密码" v-model="password" required>
-                <span class="help-block" v-if="error && errors.password">{{ errors.name[0] }}</span>
-            </div>
-            <div class="form-group" v-bind:class="{ 'has-error': error && errors.geetest_challenge }">
+            <div class="form-group">
                 <div id="gt"></div>
-                <span class="help-block" v-if="error && errors.geetest_challenge">{{ errors.geetest_challenge[0] }}</span>
             </div>
-            <button type="submit"  class="fullBtnBlue">登录</button>
+            <button type="submit" class="btn btn-default">登录</button>
         </form>
     </div>
 </template>
@@ -93,6 +88,7 @@
             error: function (resp) {
               app.errors = resp.response.data.errors;
               app.error = true;
+              console.log(app.errors,'aaa');
               app.initGt();
             },
             rememberMe: true,
@@ -103,43 +99,3 @@
     }
   } 
 </script>
-<style>
-  #email{
-    width:300px;
-  }
-  #password{
-    width:300px;
-  }
- .banner-box{
-    position: relative;
-    overflow: hidden;
-    min-height: 750px;
-    max-height: 1080px;
-    background: linear-gradient(to bottom, #101012, #1A1A1C, #151517);
-    background: #f8fcff;
-    background: linear-gradient(to bottom, #f8fcff, #f8fcff, #f8fcff);
- }
- .banner-box .main-form{
-    position: absolute;
-    top: 25%;
-    right: 18%;
-    background-color: #FFF;
-    padding: 35px 35px 10px;
-    border-radius: 2px;
- }
- .main-form .fullBtnBlue{
-    width: 300px;
-    display: block;
-    height: 46px;
-    font-size: 14px;
-    line-height: 46px;
-    text-align: center;
-    margin-bottom: 10px;
-    outline: none;
-    cursor: pointer;
-    background-color: #32a5e7;
-    color: #fff;
-    border:none;
-    border-radius: 2px;
- }
-</style>
