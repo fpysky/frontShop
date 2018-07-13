@@ -12,7 +12,7 @@
                     <a href="/" class="ml " data-mtype="store_mc_order_mcycle" data-mdesc="我的回购单">我的回购单</a>
                     <a href="/" class="ml " data-mtype="store_mc_order_insurance" data-mdesc="我的意外保">我的意外保</a>
                     <a href="javascript:;" class="type-title"><i class="iconfont icon-selfCenter"></i>个人中心</a>
-                    <a href="/" class="ml " data-mtype="store_mc_me_address" data-mdesc="地址管理">地址管理</a>
+                    <a href="/userCenterUserAddress" class="ml " data-mtype="store_mc_me_address" data-mdesc="地址管理">地址管理</a>
                     <a href="/" class="ml " data-mtype="store_mc_me_favorite" data-mdesc="我的收藏">我的收藏</a>
                     <a href="/" class="ml " data-mtype="store_mc_me_msg" data-mdesc="消息提醒">消息提醒</a>
                     <a href="/" class="ml " data-mtype="store_mc_me_suggest" data-mdesc="建议反馈">建议反馈</a>

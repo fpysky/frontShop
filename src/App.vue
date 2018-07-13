@@ -22,7 +22,7 @@
                 <!-- 登陆后 -->
                 <div v-if="$auth.check()" class="header-user-trigger" id="header-user-trigger">
                     <ul class="header-user-dropdown">
-                        <li><router-link :to="{ name: 'userCenter' }">个人中心</router-link></li>
+                        <li><router-link :to="{ name: 'userCenterIndex' }">个人中心</router-link></li>
                         <li><router-link :to="{ name: 'register' }">我的订单</router-link></li>
                         <li><a href="">M码通道</a></li>
                         <li><a href="#" @click.prevent="$auth.logout()">退出登陆</a></li>

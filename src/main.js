@@ -3,13 +3,17 @@ import VueRouter from 'vue-router';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import App from './App.vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import Dashboard from './components/Dashboard.vue';
 import Home from './components/Home.vue';
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
-import UserCenter from './components/UserCenter.vue';
+import UserCenterIndex from './components/UserCenterIndex.vue';
+import UserCenterUserAddress from './components/UserCenterUserAddress.vue';
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+Vue.use(ElementUI);
 axios.defaults.baseURL = 'http://shop.test/api';
 const router = new VueRouter({
     mode:'history',
@@ -40,9 +44,17 @@ const router = new VueRouter({
         }
     },
     {
-        path: '/userCenter',
-        name: 'userCenter',
-        component: UserCenter,
+        path: '/userCenterUserAddress',
+        name: 'userCenterUserAddress',
+        component: UserCenterUserAddress,
+        meta: {
+            auth: true
+        }
+    },
+    {
+        path: '/userCenterIndex',
+        name: 'userCenterIndex',
+        component: UserCenterIndex,
         meta: {
             auth: true
         }
