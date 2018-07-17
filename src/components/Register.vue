@@ -6,7 +6,7 @@
             </div>
             <div v-if="!success">
                 <div class="alert alert-danger" v-if="error && errors.errors">
-                    <span class="help-block" v-if="error && errors.errors">{{ errors.errors[0] }}</span>
+                    <span class="help-block" v-if="error && errors.errors">{{ errors.error[0] }}</span>
                 </div>
                 <div class="form-group" v-bind:class="{ 'has-error': error && errors.name }">
                     <input type="text" id="name" class="form-control" placeholder="用户名" v-model="name" required>

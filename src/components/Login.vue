@@ -6,15 +6,13 @@
               <h4 style="text-align:center;">登陆</h4>
             </div>
             <div class="alert alert-danger" v-if="error && errors.errors">
-                <span class="help-block" v-if="error && errors.errors">{{ errors.errors[0] }}</span>
+                <span class="help-block" v-if="error && errors.errors">{{ errors.error[0] }}</span>
             </div>
             <div class="form-group" v-bind:class="{ 'has-error': error && errors.email }">
                 <input type="email" id="email" class="form-control" placeholder="邮箱" v-model="email" required>
-                <span class="help-block" v-if="error && errors.email">{{ errors.name[0] }}</span>
             </div>
             <div class="form-group" v-bind:class="{ 'has-error': error && errors.password }">
                 <input type="password" id="password" class="form-control" placeholder="密码" v-model="password" required>
-                <span class="help-block" v-if="error && errors.password">{{ errors.name[0] }}</span>
             </div>
             <div class="form-group" v-bind:class="{ 'has-error': error && errors.geetest_challenge }">
                 <div id="gt"></div>
