@@ -14,7 +14,7 @@ import UserCenterUserAddress from './components/UserCenterUserAddress.vue';
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.use(ElementUI);
-axios.defaults.baseURL = 'http://shop.test/api';
+axios.defaults.baseURL = 'http://192.168.1.120/api';
 const router = new VueRouter({
     mode:'history',
     routes: [{
