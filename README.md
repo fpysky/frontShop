@@ -1,4 +1,4 @@
-# myproject
+# shopfront
 
 > A Vue.js project
 
