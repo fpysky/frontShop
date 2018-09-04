@@ -44,3 +44,11 @@ export function valiGeet(data) {
     data
   })
 }
+
+export function getRefreeshToken(data) {
+  return request({
+    url: 'oauth/token',
+    method: 'post',
+    data
+  })
+}

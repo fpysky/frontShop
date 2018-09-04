@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import { getToken, setToken, setRefreshToken } from '@/utils/auth'
+import { getRefreeshToken, } from '@/api/login'
 
 // create an axios instance
 const service = axios.create({
@@ -13,7 +14,6 @@ const service = axios.create({
 service.interceptors.request.use(config => {
   // Do something before request is sent
   if (store.getters.token) {
-    // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
     config.headers['Authorization'] = 'Bearer ' + getToken()
   }
   return config
@@ -60,7 +60,25 @@ service.interceptors.response.use(
   //   }
   // },
   error => {
-    console.log('err' + error) // for debug
+    //token过期了刷新token
+    if(error.response.status == 401 && error.response.data.message == 'Unauthorized'){
+      let sendData = {
+        'grant_type' : 'refresh_token',
+        'refresh_token' : store.getters.refreshToken,
+        'client_id' : 2,
+        'client_secret' : '5IjevVN52Pe3GtiAy63WsViWfNj0L8igdscvcRtL',
+        'scope' : '',
+      }
+      getRefreeshToken(sendData).then(res => {
+        setToken(res.data.access_token)
+        setRefreshToken(res.data.refresh_token)
+        console.log(res)
+      }).catch(error => {
+        return false
+      })
+    }
+    // console.log(JSON.stringify(error),'aaa')
+    // console.log('err' + error)
     // Message({
     //   message: error.message,
     //   type: 'error',

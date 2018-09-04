@@ -124,6 +124,7 @@ export default {
                         this.loading = false
                         this.$router.push({ path: '/' })
                     }).catch(error => {
+                        console.log(error)
                         this.loading = false
                         this.$message.warning('用户名或密码错误')
                         this._initGeetest()

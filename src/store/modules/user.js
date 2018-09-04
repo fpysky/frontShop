@@ -1,5 +1,5 @@
 import { loginByUsername, logout, getUserInfo } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken, removeToken, getRefreshToken, setRefreshToken, removeRefreshToken } from '@/utils/auth'
 
 const user = {
   state: {
@@ -7,6 +7,7 @@ const user = {
     status: '',
     code: '',
     token: getToken(),
+    refreshToken:getRefreshToken(),
     name: '',
     avatar: '',
     introduction: '',
@@ -22,6 +23,9 @@ const user = {
     },
     SET_TOKEN: (state, token) => {
       state.token = token
+    },
+    SET_REFRESH_TOKEN: (state, token) => {
+      state.refreshToken = token
     },
     SET_INTRODUCTION: (state, introduction) => {
       state.introduction = introduction
@@ -49,8 +53,11 @@ const user = {
       return new Promise((resolve, reject) => {
         loginByUsername(userInfo).then(response => {
           let token = response.data.access_token
+          let refresh_token = response.data.refresh_token
           commit('SET_TOKEN', token)
+          commit('SET_REFRESH_TOKEN', refresh_token)
           setToken(token)
+          setRefreshToken(refresh_token)
           resolve() 
           getUserInfo().then(response => {
             if (!response.data) {
@@ -116,8 +123,10 @@ const user = {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
           commit('SET_TOKEN', '')
-          commit('SET_ROLES', [])
+          // commit('SET_ROLES', [])
+          commit('SET_REFRESH_TOKEN', '')
           removeToken()
+          removeRefreshToken()
           resolve()
         }).catch(error => {
           reject(error)
