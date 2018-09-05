@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '@/store'
-import { getToken, setToken, setRefreshToken } from '@/utils/auth'
+import { getToken, setToken, setRefreshToken, getRefreshToken, removeToken, removeRefreshToken } from '@/utils/auth'
 import { getRefreeshToken, } from '@/api/login'
 
 // create an axios instance
@@ -61,10 +61,10 @@ service.interceptors.response.use(
   // },
   error => {
     //token过期了刷新token
-    if(error.response.status == 401 && error.response.data.message == 'Unauthorized'){
+    if(error.response.data.message == 'Unauthenticated.'){
       let sendData = {
         'grant_type' : 'refresh_token',
-        'refresh_token' : store.getters.refreshToken,
+        'refresh_token' : getRefreshToken(),
         'client_id' : 2,
         'client_secret' : '5IjevVN52Pe3GtiAy63WsViWfNj0L8igdscvcRtL',
         'scope' : '',
@@ -72,9 +72,19 @@ service.interceptors.response.use(
       getRefreeshToken(sendData).then(res => {
         setToken(res.data.access_token)
         setRefreshToken(res.data.refresh_token)
-        console.log(res)
+        store.dispatch('GetUserInfo')
       }).catch(error => {
-        return false
+        if(error.response.status == 401){
+          removeToken()
+          removeRefreshToken()
+          window.location.href = '/login'
+        }else{
+          Message({
+            message: error.message,
+            type: 'error',
+            duration: 5 * 1000
+          })
+        }
       })
     }
     // console.log(JSON.stringify(error),'aaa')

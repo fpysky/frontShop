@@ -4,6 +4,7 @@ import home from '@/views/home/index'
 import login from '@/views/login/index'
 import register from '@/views/login/register'
 import userCenter from '@/views/userCenter/index'
+import address from '@/views/userCenter/address'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/userCenter',
       name: 'userCenter',
       component: userCenter
+    },
+    {
+      path: '/address',
+      name: 'address',
+      component: address
     },
   ]
 })

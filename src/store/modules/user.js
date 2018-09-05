@@ -88,15 +88,15 @@ const user = {
           }
           const data = response.data
 
-          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-            commit('SET_ROLES', data.roles)
-          } else {
-            reject('getInfo: roles must be a non-null array !')
-          }
+          // if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+          //   commit('SET_ROLES', data.roles)
+          // } else {
+          //   reject('getInfo: roles must be a non-null array !')
+          // }
 
           commit('SET_NAME', data.user.name)
           commit('SET_AVATAR', data.user.avatar)
-          commit('SET_INTRODUCTION', data.user.introduction)
+          // commit('SET_INTRODUCTION', data.user.introduction)
           resolve(response)
         }).catch(error => {
           reject(error)
