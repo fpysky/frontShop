@@ -4,16 +4,56 @@
         <div class="home">
             <div class="home-carousel">
                 <el-carousel height="480px" :interval="5000" arrow="always">
-                    <el-carousel-item v-for="item in 4" :key="item">
-                    <h3>{{ item }}</h3>
+                    <el-carousel-item v-for="item in banner" :key="item.id">
+                    <img style="width:100%;height:100%;" :src="item.image" alt="">
                     </el-carousel-item>
                 </el-carousel>
+                <div class="page-main home-main">
+                    <div class="container">
+                        <div class="home-brick-box home-brick-row-2-box xm-plain-box J_itemBox J_brickBox no-comment-total is-visible loaded">
+                            <div class="box-hd">
+                                <h2 class="title">手机</h2>
+                            </div>
+                            <div class="box-bd J_brickBd">
+                                <div class="row">
+                                    <div class="span4 span-first">
+                                        <ul class="brick-promo-list clearfix">
+                                            <li class="brick-item brick-item-l">
+                                                <a href="https://item.mi.com/product/10000111.html" class="exposure" data-stat-aid="AA20720" data-stat-pid="2_57_1_331" data-log_code="31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432" target="_blank" data-stat-id="AA20720+2_57_1_331" onclick="_msq.push(['trackEvent', '81190ccc4d52f577-AA20720+2_57_1_331', 'https://item.mi.com/product/10000111.html', 'pcpid', '31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432']);"><img src="//i1.mifile.cn/a4/xmad_15323220713837_GLBVX.jpg" alt=""></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="span16">
+                                        <ul class="brick-list clearfix">
+                                            <li v-for="(item,index) in mobilePhone" :key="index" class="brick-item brick-item-m brick-item-m-2" data-gid="2182300110">
+                                                <div class="figure figure-img">
+                                                    <a class="exposure" href="https://item.mi.com/product/8274.html" data-stat-aid="AA20559" data-stat-pid="2_58_1_333" data-log_code="31pchomephone_right_0001019#t=normal&amp;act=other&amp;page=home&amp;bid=3185161.1&amp;pid=2182300110&amp;adm=5347" target="_blank" data-stat-id="AA20559+2_58_1_333" onclick="_msq.push(['trackEvent', '81190ccc4d52f577-AA20559+2_58_1_333', 'https://item.mi.com/product/8274.html', 'pcpid', '31pchomephone_right_0001019#t=normal&amp;act=other&amp;page=home&amp;bid=3185161.1&amp;pid=2182300110&amp;adm=5347']);">
+                                                        <!-- <img src="//i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" width="160" height="160" alt="红米6A"> -->
+                                                        <img :src="item.image">
+                                                    </a>
+                                                </div>
+                                                <h3 class="title">
+                                                    <a href="" v-text="item.title"></a>
+                                                </h3>
+                                                <p class="desc">这里是描述</p>
+                                                <p class="price">
+                                                    <span v-text="item.price" class="num">599</span>元
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
 import Header from '@/views/layout/Header'
+import { banners, mobilePhones } from '@/api/index'
 export default {
     name:'index',
     components: {
@@ -21,12 +61,36 @@ export default {
     },
     data(){
         return {
-
+            banner:[],
+            mobilePhone:[],
         }
     },
-    created(){},
+    created(){
+        this.banners()
+        this.mobilePhones()
+    },
     methods:{
-        
+        banners(){
+            banners().then(res => {
+                this.banner = res.data.list
+                this.banner.forEach(item => {
+                    item.image = process.env.BASE_API + item.image
+                })
+            }).catch(error => {
+                this.$message.error(error.response.data.message)
+            })
+        },
+        mobilePhones(){
+            mobilePhones().then(res => {
+                this.mobilePhone = res.data.list
+                console.log(this.mobilePhone)
+                this.mobilePhone.forEach(item => {
+                    item.image = process.env.BASE_API + item.image
+                })
+            }).catch(error => {
+                this.$message.error(error.response.data.message)
+            })
+        },
     }
 }
 </script>
@@ -34,7 +98,6 @@ export default {
 .home {
     background: #f4f4f4;
     position: relative;
-    overflow: hidden;
 }
 .home-carousel {
     width: 100%;
@@ -46,13 +109,177 @@ export default {
     opacity: 0.75;
     line-height: 300px;
     margin: 0; 
-  }
-  
-  .el-carousel__item:nth-child(2n) {
+}
+.el-carousel__item:nth-child(2n) {
     background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
+}
+.el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
-  }
+}
+.home-main {
+    padding-top: 22px;
+}
+.page-main {
+    background: #f5f5f5;
+}
+.container {
+    width: 1226px; 
+    margin-right: auto;
+    margin-left: auto;
+}
+.home-brick-row-2-box {
+    height: 686px;
+}
+.box-hd {
+    position: relative;
+    height: 58px;
+    -webkit-font-smoothing: antialiased;
+}
+.row {
+    margin-left: -14px;
+    _margin-left: 0;
+    *zoom: 1;
+}
+.span4 {
+    width: 234px;
+}
+.home-brick-box .brick-list, .home-brick-box .brick-promo-list {
+    margin: 0 0 -14px -14px;
+    _margin-left: 0;
+}
+.brick-list, .brick-promo-list {
+    height: 614px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.clearfix {
+    *zoom: 1;
+}
+.brick-item-l {
+    height: 614px;
+}
+.brick-item {
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 234px;
+    margin-left: 14px;
+    margin-bottom: 14px;
+    background: #fff;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.brick-promo-list a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.brick-promo-list .brick-item-l img {
+    height: 614px;
+}
+.brick-promo-list img {
+    width: 234px;
+}
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16, .span17, .span18, .span19, .span20 {
+    float: left;
+    margin-left: 14px;
+    min-height: 1px;
+}
+.span16 {
+    width: 978px;
+}
+.brick-list {
+    width: 992px;
+}
+.brick-list, .brick-promo-list {
+    height: 614px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.brick-item-m-2 {
+    height: 260px;
+    padding: 20px 0;
+}
+.brick-item-m {
+    height: 246px;
+    padding: 34px 0 20px;
+    *zoom: 1;
+}
+.brick-item {
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 234px;
+    margin-left: 14px;
+    margin-bottom: 14px;
+    background: #fff;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.brick-item-m-2 .figure-img {
+    width: 160px;
+    height: 160px;
+}
+.brick-item-m .figure-img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 18px;
+}
+.brick-item-m .figure-img a {
+    display: block;
+}
+.brick-item-m-2 .figure-img img {
+    width: 160px;
+    height: 160px;
+}
+.brick-item-m .figure-img img {
+    width: 150px;
+    height: 150px;
+}
+.brick-item-m-2 .title {
+    margin: 0 10px 2px;
+}
+.brick-item-m .title, .brick-item-m .title a {
+    color: #333;
+}
+.brick-item-m .title {
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+.brick-item-m .title a {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+}
+.brick-item-m .title, .brick-item-m .title a {
+    color: #333;
+}
+.brick-item-m .desc {
+    margin: 0 10px 10px;
+    height: 18px;
+    font-size: 12px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+    color: #b0b0b0;
+}
+.brick-item-m-2 .price {
+    margin: 0 10px 14px;
+}
+.brick-item-m .price {
+    margin: 0 10px 10px;
+    text-align: center;
+    color: #ff6700;
+}
+.clearfix:after {
+    clear: both;
+}
 </style>
