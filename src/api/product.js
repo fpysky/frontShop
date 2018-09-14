@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function fetchAddressList(query) {
+export function fetchList(query) {
   return request({
     url: 'api/addresses',
     method: 'get',
@@ -8,9 +8,9 @@ export function fetchAddressList(query) {
   })
 }
 
-export function storeAddress(data) {
+export function products(data) {
     return request({
-      url: 'api/addresses',
+      url: 'api/products',
       method: 'post',
       data
     })

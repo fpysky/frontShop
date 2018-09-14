@@ -153,7 +153,7 @@
 import Header from '@/views/layout/Header'
 import { mapGetters } from 'vuex'
 import city_arr from '@/city-data.js'
-import { storeAddress, fetchList, deleteAddress } from '@/api/address'
+import { storeAddress, fetchAddressList, deleteAddress } from '@/api/address'
 export default {
     components: {
         Header
@@ -279,7 +279,7 @@ export default {
                 page : this.page,
                 pSize: this.pSize,
             }
-            fetchList(query).then(res => {
+            fetchAddressList(query).then(res => {
                 this.tableData = res.data.list
                 this.total = res.data.total
             }).catch(error => {

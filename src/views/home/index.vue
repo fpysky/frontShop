@@ -27,7 +27,7 @@
                                         <ul class="brick-list clearfix">
                                             <li v-for="(item,index) in mobilePhone" :key="index" class="brick-item brick-item-m brick-item-m-2" data-gid="2182300110">
                                                 <div class="figure figure-img">
-                                                    <a class="exposure" href="https://item.mi.com/product/8274.html" data-stat-aid="AA20559" data-stat-pid="2_58_1_333" data-log_code="31pchomephone_right_0001019#t=normal&amp;act=other&amp;page=home&amp;bid=3185161.1&amp;pid=2182300110&amp;adm=5347" target="_blank" data-stat-id="AA20559+2_58_1_333" onclick="_msq.push(['trackEvent', '81190ccc4d52f577-AA20559+2_58_1_333', 'https://item.mi.com/product/8274.html', 'pcpid', '31pchomephone_right_0001019#t=normal&amp;act=other&amp;page=home&amp;bid=3185161.1&amp;pid=2182300110&amp;adm=5347']);">
+                                                    <a class="exposure" href="" @click.prevent="goProduct(item.id)">
                                                         <!-- <img src="//i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" width="160" height="160" alt="红米6A"> -->
                                                         <img :src="item.image">
                                                     </a>
@@ -35,7 +35,7 @@
                                                 <h3 class="title">
                                                     <a href="" v-text="item.title"></a>
                                                 </h3>
-                                                <p class="desc">这里是描述</p>
+                                                <p class="desc" v-text="item.desc"></p>
                                                 <p class="price">
                                                     <span v-text="item.price" class="num">599</span>元
                                                 </p>
@@ -70,6 +70,12 @@ export default {
         this.mobilePhones()
     },
     methods:{
+        goProduct(id){
+            this.$router.push({
+                name:'/product',
+                params:{id: id}
+            })
+        },
         banners(){
             banners().then(res => {
                 this.banner = res.data.list
@@ -83,7 +89,7 @@ export default {
         mobilePhones(){
             mobilePhones().then(res => {
                 this.mobilePhone = res.data.list
-                console.log(this.mobilePhone)
+                // console.log(this.mobilePhone)
                 this.mobilePhone.forEach(item => {
                     item.image = process.env.BASE_API + item.image
                 })
@@ -95,6 +101,9 @@ export default {
 }
 </script>
 <style scoped>
+a{
+    text-decoration: none;
+}
 .home {
     background: #f4f4f4;
     position: relative;

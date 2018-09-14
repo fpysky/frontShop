@@ -27,7 +27,7 @@
                   </a>
               </li>
               <li class="layout-header-service-item layout-header-service-cart" id="layoutHeaderCart">
-                  <a class="layout-header-service-link service-cart" href="//cart.meizu.com" data-mtype="wmz_public_yt_cart">
+                  <a @click.prevent="goCart" class="layout-header-service-link service-cart" href="" data-mtype="wmz_public_yt_cart">
                       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAABAxJREFUaAXtWbtLNDEQn1NPQcG3lS9UxAcWiiAIlnaCYCFW/hn+FXbCIdhfeQiKoPZiIaeg4At8gKjgs7BQFPX7fqsJ2d3snbsbd7PeTrOTSTKZX2aSTLKJz/9EBURFBYTVgBoD/usejz0ce/iPzUAc0n/MoTY4BefhEusUrK+v0/LyMr2+vlqreHl8fJzGxsZ4OUqMzcMrKys5wQLczs5OlDCabLUB7u3tNTWQFS4uLuj+/l5Wpb0sYb084C5xfn4u9fL8/Dw9Pz8boCYnJ2l0dFR7gFYDbWs4kUhQW1ubtZ1R7uvro62tLYNHWEcRsC2kpUi/hQMDA7z69PSUnp6eeDkqjM3DuQyHh5PJJL29vdHHxwdtbGyQOAm5+gZVhwitqqqisrIy6ZC2NSxtJQhTqRTt7u4KEv1YgO7v76epqSmqqakxGegqpNFTN4+a0HwXsPFij5mbm7Ntvq4BI6yjQldXV5TNZk3mulrD6FlZWUmNjY10eXlpKBoZGSFkXroQvLuwsEAnJyeGScgZhoeHuXmuAaMnkhMGGGc2Ngmd6OHhgZtTXV3NeTCuQxqdenp68DEIwHU6nnBcPj4+MvOoq6uL82A8Ae7s7KSSkq/gQAgdHByYlIZZENdsfX09tba2mszxBLi0tJQ6Ojq4ov39fc6HzYiABwcHbeZ4AgwtYlgfHh7aFIchsIazUsDirQpr5vr6OgyMpjFF78rCGY09e7ilpYUqKir4gDqsYxGwzLu+ACN96+7u1gbwT8LZF2B0Ftfx8fExvb+/8wkImhG96xTOsMlzSKOzuI5fXl7o7OwM4lBIBOwUzjDMF+C6ujpqaGjgAMM6nn4azr4BQ4EY1mFtXKJ3c4WzEsBiWCOvZm9eUB4UiYBzhTPs8RXSUIBctajoSw1eQY6OjiAOjNyEM4zyDbi8vNyUrwa9jkXv5gtnJYChRFzHe3t7hAtFEIRjUAScL5xhk28PQ4k4EO6ii4uLvw4ak5rJZExXwaGhIZiTkzw9AFg1NjU1GV5mu/Ta2hptb29Tc3MzISNTTdgr8JJxd3fHVePRDnbkI9evlk4K8etldnbWNONObVXLa2traWZmhvDNR8oAY6CbmxtKp9MU5HUR+8f09DQhCfoJKQXMBsRRgTTz9vb2V/Lr4uJiI8Nrb293/C3EbLF+fwWwdRCdykp2aZ0A5bMlBpxvhqJer+QcFicB2c/S0hJtbm4aYrz6488ENhoV5Fe/csAAu7q6yrExfmJigsv8MH71K1/DzLMiKJlMrHfDy3TJZE46lQN2GkgXuXLA4p86BlImY3VuvzJdMpmTXuVrmP06ZWEGY5jMyQg3cqbLq/4403Iz21Fsq3wN6z4JMWDdPeTXvtjDfmdQ9/4F5+F/nGyFQiUTZpsAAAAASUVORK5CYII=" alt=" " class="layout-font-cart">
                       <span class="layout-header-service-cart-num" style="line-height: 15px;">0</span>
                   </a>
@@ -113,6 +113,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import { getToken } from '@/utils/auth'
 export default {
   name: 'Header',
   data () {
@@ -128,6 +129,13 @@ export default {
     ])
   },
   methods:{
+    goCart(){
+        if(getToken()){
+            this.$router.push({name:'/cart'})
+        }else{
+            this.$router.push({name:'/login'})
+        }
+    },
     layoutHeaderUserOver(eventName){
       if(eventName == 'over'){
         this.$refs.layoutUserDownmenu.classList.add("layout-user-downmenu-show")
@@ -141,10 +149,10 @@ export default {
       })
     },
     goUserCenter(){
-        if(this.$store.getters.name != ''){
-            this.$router.push({name:'userCenter'})
+        if(getToken()){
+            this.$router.push({name:'/userCenter'})
         }else{
-            this.$router.push({name:'register'})
+            this.$router.push({name:'/register'})
         }
     },
   }

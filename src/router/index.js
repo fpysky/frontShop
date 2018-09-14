@@ -1,10 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/views/home/index'
-import login from '@/views/login/index'
-import register from '@/views/login/register'
-import userCenter from '@/views/userCenter/index'
-import address from '@/views/userCenter/address'
 
 Vue.use(Router)
 
@@ -13,28 +8,43 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: home
+      name: '/home',
+      component: () => import('@/views/home/index')
     },
     {
       path: '/login',
-      name: 'login',
-      component: login
+      name: '/login',
+      component: () => import('@/views/login/index')
     },
     {
       path: '/register',
-      name: 'register',
-      component: register
+      name: '/register',
+      component: () => import('@/views/login/register')
     },
     {
       path: '/userCenter',
-      name: 'userCenter',
-      component: userCenter
+      name: '/userCenter',
+      component: () => import('@/views/userCenter/index')
     },
     {
       path: '/address',
-      name: 'address',
-      component: address
+      name: '/address',
+      component: () => import('@/views/userCenter/address')
+    },
+    {
+      path: '/product',
+      name: '/product',
+      component: () => import('@/views/product/product')
+    },
+    {
+      path: '/cart',
+      name: '/cart',
+      component: () => import('@/views/cart/index')
+    },
+    {
+      path: '/addOrder',
+      name: '/addOrder',
+      component: () => import('@/views/order/add')
     },
   ]
 })
