@@ -34,64 +34,49 @@
                     <div class="order-product-list">
                         <table cellpadding="0" cellspacing="0" class="order-product-table">
                             <thead>
-                            <tr>
-                                <th class="order-product-table-name">
-                                <div class="order-product-supplier">
-                                    供应商：<span class="order-product-supplier-name">魅族</span>
-                                    <!--<div class="order-product-supplier-tips">由“魅族”负责发货，并提供售后服务</div>-->
-                                </div>
-                                </th>
-                                <th class="order-product-table-price">单价</th>
-                                <th class="order-product-table-num">数量</th>
-                                <th class="order-product-table-total">小计</th>
-                                <th class="order-product-table-express table-express-header">配送方式</th>
-                            </tr>
+                                <tr>
+                                    <th class="order-product-table-name">
+                                    <div class="order-product-supplier">
+                                        供应商：<span class="order-product-supplier-name">魅族</span>
+                                        <!--<div class="order-product-supplier-tips">由“魅族”负责发货，并提供售后服务</div>-->
+                                    </div>
+                                    </th>
+                                    <th class="order-product-table-price">单价</th>
+                                    <th class="order-product-table-num">数量</th>
+                                    <th class="order-product-table-total">小计</th>
+                                    <th class="order-product-table-express table-express-header">配送方式</th>
+                                </tr>
                             </thead>
-                            <tbody><tr>
-                            <td class="order-product-table-name">
-                                <a target="_blank" class="order-product-link" href="//detail.meizu.com/item/meizu15.html" data-mdesc="确认订单信息" data-mtype="store_se_ord">
-                                <img class="order-product-image" data-original="//openfile.meizu.com/group1/M00/04/1A/Cgbj0VrcbmKALZ1BAA0NVqTeXpU942.png@120x120.jpg" src="//openfile.meizu.com/group1/M00/04/1A/Cgbj0VrcbmKALZ1BAA0NVqTeXpU942.png@120x120.jpg" style="display: inline;">
-                                </a>
-                                <div class="order-product-name">
-                                <a target="_blank" class="order-product-link" href="//detail.meizu.com/item/meizu15.html" data-mdesc="确认订单信息" data-mtype="store_se_ord">
-                                    <p class="order-product-name-item item-name">魅族 15</p>
-                                    <p class="order-product-name-item cspu-desc">全网通公开版 雅金 4GB+64GB</p>
-                                    
-                                </a>
-                                </div>
-                            </td>
-                            <td class="order-product-table-price">
-                                <p>
-                                <span class="order-product-price">1998.00</span>
-                                
-                                </p>
-                                
-                                
-                            </td>
-                            <td class="order-product-table-num">1</td>
-                            <td class="order-product-table-total">
-                                <p class="order-product-price red">1998.00</p>
-                            </td>
+                            <tbody>
+                                <tr v-for="(item,index) in settle" :key="index">
+                                    <td class="order-product-table-name">
+                                        <a target="_blank" class="order-product-link" href="//detail.meizu.com/item/meizu15.html" data-mdesc="确认订单信息" data-mtype="store_se_ord">
+                                        <img class="order-product-image" :src="item.productSku.image" style="display: inline;">
+                                        </a>
+                                        <div class="order-product-name">
+                                        <a target="_blank" class="order-product-link" href="//detail.meizu.com/item/meizu15.html" data-mdesc="确认订单信息" data-mtype="store_se_ord">
+                                            <p v-text="item.productSku.title" class="order-product-name-item item-name"></p>
+                                            <p v-text="item.productSku.description" class="order-product-name-item cspu-desc"></p> 
+                                        </a>
+                                        </div>
+                                    </td>
+                                    <td class="order-product-table-price">
+                                        <p><span v-text="item.productSku.price" class="order-product-price"></span></p>
+                                    </td>
+                                    <td v-text="item.amount" class="order-product-table-num"></td>
+                                    <td class="order-product-table-total">
+                                        <p v-text="item.productSku.price * item.amount" class="order-product-price red"></p>
+                                    </td> 
+                                    <td v-if="index == 0" class="order-product-table-express" rowspan="999">
+                                        <p> 快递配送：运费<span class="order-product-price red express-fee has-express-fee">0.00</span></p>
+                                        <div class="order-product-arrival"> 
+                                            <p>19:00前下单并支付，</p>
+                                            <p>预计<strong>后天（09月16日）</strong>送达</p>
+                                        </div>
+                                    </td>
                             
-                            <td class="order-product-table-express" rowspan="999">
-                                <p>
-                                快递配送：运费<span class="order-product-price red express-fee has-express-fee">0.00</span>
-                                </p>
-                            <div class="order-product-arrival">
-                            
-                            <p>19:00前下单并支付，</p>
-                            <p>预计<strong>后天（09月16日）</strong>送达</p>
-                            </div></td>
-                            
-                            </tr>
-
-                            <!-- 套餐 -->
-
-
-                            <!-- 赠品 -->
-
-
-                            <!-- 加价购商品 --></tbody>
+                                </tr>
+                            </tbody>
                             <tfoot>
                             <tr class="order-product-footer">
                                 <td colspan="3" class="order-product-info">
@@ -113,7 +98,7 @@
                                 
                                 </td>
                                 <td colspan="2" class="order-product-total">
-                                合计：<span class="order-product-price red total-has-express-fee">1998.00</span>
+                                合计：<span v-text="amount" class="order-product-price red total-has-express-fee"></span>
                                 </td>
                             </tr>
                             <tr class="order-product-remark">
@@ -126,6 +111,54 @@
                             </table>
                     </div>
                 </div>
+                <div class="order-total clearfix">
+                    <div class="order-total-pay">
+                        <div class="order-total-pay-header">选择支付方式</div>
+                        <div class="order-total-pay-content">
+                            <el-radio v-model="payWay" label="1">支付宝</el-radio>
+                            <el-radio v-model="payWay" label="2">微信</el-radio>
+                        </div>
+                    </div>
+                    <div class="order-total-content">
+                        <div class="order-total-row">
+                            总金额：
+                            <div v-text="amount" class="order-total-price" id="totalOrderPrice"></div>
+                        </div>
+                        <!-- <div class="order-total-row order-total-discount" id="totalCouponRow">
+                            优惠券：
+                            <div class="order-total-price sub">0.00</div>
+                        </div> -->
+                        <!-- <div class="order-total-row order-total-discount" id="totalRedRow">
+                            红包：
+                            <div class="order-total-price sub">0.00</div>
+                        </div> -->
+                        <!-- <div class="order-total-row order-total-discount" id="totalRepoRow" style="display: none;">
+                            回购金：
+                            <div class="order-total-price sub">0.00</div>
+                        </div> -->
+                        <!-- <div class="order-total-row order-total-discount" id="totalGiftRow">
+                            礼品卡：
+                            <div class="order-total-price sub">0.00</div>
+                        </div> -->
+                        <div class="order-total-row">
+                            运费
+                            <div class="order-total-price" id="totalExpressPrice">0.00</div>
+                        </div>
+                        <div class="order-total-line"></div>
+                        <div class="order-total-row">
+                            应付：
+                            <div v-text="amount" class="order-total-price total" id="totalPayPrice"></div>
+                        </div>
+                        <div class="order-total-row order-total-valid-row clearfix">
+                            <div class="order-total-valid" id="validCode"></div>
+                            <div @click="createOrder" class="mz-btn success" id="submitForm" data-mdesc="下单并支付" data-mtype="store_se_pay">下单并支付</div>
+                            <!-- <div class="order-stock-tips-wrap" id="orderStockTips" style="display: block;">
+                                <div class="order-stock-tips">该订单含付款减库存商品，支付完成后才会为您预留库存！</div>
+                            </div> -->
+                        </div>
+                        <div class="order-total-row order-total-row-tips" id="totalTips"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -133,6 +166,7 @@
 <script>
 import Header from '@/views/layout/Header'
 import { fetchAddressList } from '@/api/address'
+import { createOrder, pay } from '@/api/order'
 import city_arr from '@/city-data.js'
 export default {
    name:'add',
@@ -144,16 +178,36 @@ export default {
            addresses:[],
            city_arr:city_arr,
            address_id:0,
+           settle:[],
+           amount:0.00,
+           payWay:'1',
+           items:[],
        }
    }, 
    created(){
        if(this.$route.params.settle){
-        //    console.log(this.$route.params.settle)
+           this.settle = this.$route.params.settle
+           this.settle.forEach(item => {
+               item.productSku.image = process.env.BASE_API + item.productSku.image
+               this.amount = parseFloat(this.amount) + parseFloat(item.amount) * parseFloat(item.productSku.price)
+               this.items.push({sku_id:item.productSku.id,amount:item.amount})
+           })
+           console.log(this.settle,'this.settle')
        }
-       this.fetchAddressList()
-    //    console.log(this.city_arr)
+       this.fetchAddressList() 
    },
    methods:{
+       createOrder(){
+           createOrder({
+               address_id:this.address_id,
+               items:this.items,
+           }).then(res => {
+               let order = res.data.order
+               window.location.href = process.env.BASE_API + 'api/payment/alipay/' + order.id
+           }).catch(error => {
+               this.$notify.warning(error.response.data.message)
+           })
+       },
        choiceAddress(id){
            this.address_id = id
        },
@@ -182,10 +236,8 @@ export default {
                    if(item.is_default){
                        this.address_id = item.id
                    }
-               })
-            //    console.log(this.addresses,'this.addresses')
-           }).catch(error => {
-            //    console.log(error)
+               }) 
+           }).catch(error => { 
                this.$notify.warning(error.response.data.message)
            })
        },
@@ -582,5 +634,108 @@ table {
     width: 100px;
     margin-left: 24px;
     margin-right: 16px;
+}
+.order-total-pay {
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.order-total-pay .order-total-pay-header {
+    color: #333;
+    font-size: 18px;
+    padding: 10px 0 16px;
+    font-weight: 500;
+}
+.order-total-pay .order-total-pay-content {
+    padding: 40px 26px 30px;
+    border: 1px solid #efefef;
+}
+.order-total {
+    overflow: hidden;
+    padding: 0 24px 30px;
+    color: #898989;
+    background-color: #FFF;
+}
+.order-total .order-total-content {
+    float: right;
+    width: 318px;
+}
+.order-total .order-total-row {
+    padding: 0 2px;
+    margin-bottom: 12px;
+}
+.order-total .order-total-discount {
+    display: none;
+}
+.order-total .order-total-row {
+    padding: 0 2px;
+    margin-bottom: 12px;
+}
+.order-total .order-total-price.sub {
+    color: #e02b41;
+}
+.order-total .order-total-price {
+    float: right;
+}
+.order-total .order-total-line {
+    width: 100%;
+    height: 1px;
+    background-color: #EFEFEF;
+    margin-bottom: 20px;
+}
+.order-total .order-total-row {
+    padding: 0 2px;
+    margin-bottom: 12px;
+}
+.order-total .order-total-price.total {
+    color: #e02b41;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.order-total .order-total-row.order-total-valid-row {
+    font-size: 0;
+    margin-bottom: 5px;
+    padding-right: 0;
+}
+.order-total .order-total-valid {
+    position: relative;
+    float: left;
+    width: 200px;
+    margin-right: 14px;
+}
+.order-total .order-total-row.order-total-valid-row .mz-btn {
+    float: right;
+    border-color: #F66567;
+    background-color: #F66567;
+    border-radius: 2px;
+}
+.mz-btn.success {
+    color: #FFF;
+    border-color: #00c3f5;
+    background-color: #00c3f5;
+}
+.mz-btn.success {
+    color: #FFF;
+    border-color: #00c3f5;
+    background-color: #00c3f5;
+}
+.mz-btn {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    min-width: 58px;
+    min-height: 34px;
+    line-height: 34px;
+    transition: .5s all;
+    padding: 0 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 </style>

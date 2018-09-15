@@ -79,6 +79,7 @@ import Header from '@/views/layout/Header'
 import { products } from '@/api/product'
 import { addCart } from '@/api/cart'
 import { getToken } from '@/utils/auth'
+import { settle } from '@/api/cart'
 export default {
     name:'product',
     components: {
@@ -121,15 +122,21 @@ export default {
             }else{
                 this.$router.push({name:'/login'})
             }
-            // console.log({
-            //     sku_id:this.product.sku.id,
-            //     amount:this.amount,
-            // })
-            
         },
         buy(){
             if(getToken()){
-                //去结算
+                if(this.amount < 0){
+                    this.$notify.warning('商品数量不得小于0')
+                }else{
+                    addCart({
+                        sku_id:this.product.sku.id,
+                        amount:this.amount,
+                    }).then(res => {
+                        this.$router.push({name:'/cart'})
+                    }).catch(error => {
+                        this.$notify.warning(error.response.data.message)
+                    })
+                }
             }else{
                 this.$router.push({name:'/login'})
             }

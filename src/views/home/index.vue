@@ -89,7 +89,6 @@ export default {
         mobilePhones(){
             mobilePhones().then(res => {
                 this.mobilePhone = res.data.list
-                // console.log(this.mobilePhone)
                 this.mobilePhone.forEach(item => {
                     item.image = process.env.BASE_API + item.image
                 })
