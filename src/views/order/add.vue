@@ -161,17 +161,20 @@
                 </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from '@/views/layout/Header'
+import Footer from '@/views/layout/Footer'
 import { fetchAddressList } from '@/api/address'
 import { createOrder, pay } from '@/api/order'
 import city_arr from '@/city-data.js'
 export default {
    name:'add',
    components: {
-        Header
+        Header,
+        Footer
     },
    data(){
        return {

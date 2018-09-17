@@ -30,4 +30,11 @@ export function settle(data) {
       method: 'post',
       data
     })
-} 
+}
+
+export function getCartNum() {
+  return request({
+    url: 'api/cart/num',
+    method: 'get'
+  })
+}

@@ -84,15 +84,18 @@
                 </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from '@/views/layout/Header'
+import Footer from '@/views/layout/Footer'
 import { fetchCartList, updateCart, settle } from '@/api/cart'
 export default {
     name:'cart',
     components: {
-        Header
+        Header,
+        Footer
     },
     data(){
         return {

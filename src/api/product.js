@@ -23,3 +23,10 @@ export function deleteAddress(data) {
       data
     })
 }
+
+export function productClassify() {
+  return request({
+    url: 'api/productClassify',
+    method: 'get',
+  })
+}

@@ -90,15 +90,18 @@
             </div>
         </div>
     </div>
+    <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from '@/views/layout/Header'
+import Footer from '@/views/layout/Footer'
 import { mapGetters } from 'vuex'
 export default {
     name:'index',
     components: {
-        Header
+        Header,
+        Footer
     },
     computed: {
         ...mapGetters([

@@ -147,16 +147,19 @@
                 </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from '@/views/layout/Header'
+import Footer from '@/views/layout/Footer'
 import { mapGetters } from 'vuex'
 import city_arr from '@/city-data.js'
 import { storeAddress, fetchAddressList, deleteAddress } from '@/api/address'
 export default {
     components: {
-        Header
+        Header,
+        Footer
     },
     data(){
         return {

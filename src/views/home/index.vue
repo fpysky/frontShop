@@ -8,40 +8,76 @@
                     <img style="width:100%;height:100%;" :src="item.image" alt="">
                     </el-carousel-item>
                 </el-carousel>
-                <div class="page-main home-main">
-                    <div class="container">
-                        <div class="home-brick-box home-brick-row-2-box xm-plain-box J_itemBox J_brickBox no-comment-total is-visible loaded">
-                            <div class="box-hd">
-                                <h2 class="title">手机</h2>
+                <div class="site-category">
+                    <ul class="site-category-list clearfix">
+                        <li @mouseover="categoryLiOver(index)" @mouseout="categoryLiOut(index)" ref="categoryLi" v-for="(item,index) in category" :key="index" class="category-item">
+                            <a class="title" href="javascript:;">{{ item.name }}<i class="el-icon-arrow-right title-i"></i></a>
+                            <div class="children clearfix children-col-4">
+                                <div v-for="(child,child_index) in item._child" :key="child_index" class="children-list-col">
+                                    <a class="link" href="javascript:;">
+                                        <!-- <img class="thumb" src="//i1.mifile.cn/f/i/g/2015/cn-index/m8-80.png?width=80&amp;height=80" width="40" height="40" alt=""> -->
+                                        <span class="text">{{ child.name }}</span>
+                                        <i class="el-icon-arrow-right title-i"></i>
+                                    </a>
+                                    <ul>
+                                        <li v-for="(product,product_index) in child.product" :key="product_index">
+                                            <a href="" @click.prevent="goProduct(product.id)">
+                                                <img class="thumb" :src="product.image" width="40" height="40" alt="">
+                                                <span>{{ product.title}}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- <ul class="children-list children-list-col children-list-col-1">
+                                    <li v-for="(child,child_index) in item._child" :key="child_index">
+                                        <a class="link" href="https://www.mi.com/mi8/">
+                                            <img class="thumb" src="//i1.mifile.cn/f/i/g/2015/cn-index/m8-80.png?width=80&amp;height=80" width="40" height="40" alt="">
+                                            <span class="text">{{ child.name }}</span>
+                                        </a>
+                                    </li>
+                                </ul> -->
+                                    
+                                <!-- <ul>
+                                    <li v-for="(child,child_index) in item._child" :key="child_index"><a href="">{{ child.name }}</a></li>
+                                </ul> -->
                             </div>
-                            <div class="box-bd J_brickBd">
-                                <div class="row">
-                                    <div class="span4 span-first">
-                                        <ul class="brick-promo-list clearfix">
-                                            <li class="brick-item brick-item-l">
-                                                <a href="https://item.mi.com/product/10000111.html" class="exposure" data-stat-aid="AA20720" data-stat-pid="2_57_1_331" data-log_code="31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432" target="_blank" data-stat-id="AA20720+2_57_1_331" onclick="_msq.push(['trackEvent', '81190ccc4d52f577-AA20720+2_57_1_331', 'https://item.mi.com/product/10000111.html', 'pcpid', '31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432']);"><img src="//i1.mifile.cn/a4/xmad_15323220713837_GLBVX.jpg" alt=""></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="span16">
-                                        <ul class="brick-list clearfix">
-                                            <li v-for="(item,index) in mobilePhone" :key="index" class="brick-item brick-item-m brick-item-m-2" data-gid="2182300110">
-                                                <div class="figure figure-img">
-                                                    <a class="exposure" href="" @click.prevent="goProduct(item.id)">
-                                                        <!-- <img src="//i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" width="160" height="160" alt="红米6A"> -->
-                                                        <img :src="item.image">
-                                                    </a>
-                                                </div>
-                                                <h3 class="title">
-                                                    <a href="" v-text="item.title"></a>
-                                                </h3>
-                                                <p class="desc" v-text="item.desc"></p>
-                                                <p class="price">
-                                                    <span v-text="item.price" class="num">599</span>元
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-main home-main">
+                <div class="container">
+                    <div class="home-brick-box home-brick-row-2-box xm-plain-box J_itemBox J_brickBox no-comment-total is-visible loaded">
+                        <div class="box-hd">
+                            <h2 class="title">手机</h2>
+                        </div>
+                        <div class="box-bd J_brickBd">
+                            <div class="row">
+                                <div class="span4 span-first">
+                                    <ul class="brick-promo-list clearfix">
+                                        <li class="brick-item brick-item-l">
+                                            <a href="https://item.mi.com/product/10000111.html" class="exposure" data-stat-aid="AA20720" data-stat-pid="2_57_1_331" data-log_code="31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432" target="_blank" data-stat-id="AA20720+2_57_1_331" onclick="_msq.push(['trackEvent', '81190ccc4d52f577-AA20720+2_57_1_331', 'https://item.mi.com/product/10000111.html', 'pcpid', '31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432']);"><img src="//i1.mifile.cn/a4/xmad_15323220713837_GLBVX.jpg" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span16">
+                                    <ul class="brick-list clearfix">
+                                        <li v-for="(item,index) in mobilePhone" :key="index" class="brick-item brick-item-m brick-item-m-2" data-gid="2182300110">
+                                            <div class="figure figure-img">
+                                                <a class="exposure" href="" @click.prevent="goProduct(item.id)">
+                                                    <!-- <img src="//i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" width="160" height="160" alt="红米6A"> -->
+                                                    <img :src="item.image">
+                                                </a>
+                                            </div>
+                                            <h3 class="title">
+                                                <a href="" v-text="item.title"></a>
+                                            </h3>
+                                            <p class="desc" v-text="item.desc"></p>
+                                            <p class="price">
+                                                <span v-text="item.price" class="num">599</span>元
+                                            </p>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -49,27 +85,53 @@
                 </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from '@/views/layout/Header'
+import Footer from '@/views/layout/Footer'
 import { banners, mobilePhones } from '@/api/index'
+import { productClassify } from '@/api/product'
 export default {
     name:'index',
     components: {
-        Header
+        Header,
+        Footer
     },
     data(){
         return {
             banner:[],
             mobilePhone:[],
+            category:[],
         }
     },
     created(){
         this.banners()
         this.mobilePhones()
+        this.productClassify()
     },
     methods:{
+        categoryLiOver(index){
+            this.$refs.categoryLi[index].classList.add('category-item-active')
+        },
+        categoryLiOut(index){
+            this.$refs.categoryLi[index].classList.remove('category-item-active')
+        },
+        productClassify(){
+            productClassify().then(res => {
+                this.category = res.data.list
+                this.category.forEach(item => {
+                    item._child.forEach(child =>{
+                        child.product.forEach(product => {
+                            product.image = process.env.BASE_API + product.image
+                        })
+                    })
+                })
+            }).catch(error => {
+                this.$notify.warning(error.response.data.message)
+            })
+        },
         goProduct(id){
             this.$router.push({
                 name:'/product',
@@ -102,6 +164,12 @@ export default {
 <style scoped>
 a{
     text-decoration: none;
+    color:#000;
+}
+ul{
+    padding:0;
+    margin:0;
+    list-style-type: none;
 }
 .home {
     background: #f4f4f4;
@@ -289,5 +357,92 @@ a{
 }
 .clearfix:after {
     clear: both;
+}
+.site-category { 
+    position: absolute;
+    top: 0;
+    left: 18%;
+    z-index: 10000;
+    width: 234px;
+    height: 460px;
+    font-size: 17px;
+}
+.site-category-list {
+    height: 100%;
+    border: 0;
+    color: #fff;
+    background: #333;
+    background: rgba(0,0,0,0.6);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#99000000", endColorstr="#99000000")\9;
+    padding:20px 0 0 0;
+}
+.clearfix {
+    *zoom: 1;
+}
+.site-category-list .title {
+    color: #fff;
+}
+.site-category-list .title {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    height: 56px;
+    line-height: 56px;
+}
+.site-category-list .title-i {
+    position:absolute;
+    right:10px;
+    top:0;
+    line-height: 56px;
+}
+.site-category-list .children-col-4 {
+    width: 992px;
+    overflow: hidden;
+}
+.site-category-list .children {
+    display: none;
+    position: absolute;
+    left: 234px;
+    top: 0;
+    z-index: 24;
+    height: 480px;
+    border: 1px solid #e0e0e0;
+    border-left: 0;
+    background: #fff;
+    -webkit-box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+}
+.category-item-active .children{
+    display:block;
+    opacity: .9;
+}
+.site-category-list .children-list-col{
+    float: left;
+    width: 160px;
+    height: 76px;
+    line-height: 76px;
+    padding:0 0 0 15px;
+    position: relative;
+}
+.site-category-list .children-list .link {
+    display: block;
+    padding: 18px 20px;
+    line-height: 40px;
+    color: #333;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+}
+.site-category-list .children-list-col .thumb {
+    margin-right: 12px;
+    vertical-align: middle;
+}
+.site-category-list .children-list-col .text {
+    line-height: 40px;
+}
+.children-list-col .title-i{
+    position:absolute;
+    right:10px;
+    top:0;
+    line-height: 76px;
 }
 </style>

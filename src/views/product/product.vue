@@ -72,10 +72,12 @@
                 </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from '@/views/layout/Header'
+import Footer from '@/views/layout/Footer'
 import { products } from '@/api/product'
 import { addCart } from '@/api/cart'
 import { getToken } from '@/utils/auth'
@@ -83,7 +85,8 @@ import { settle } from '@/api/cart'
 export default {
     name:'product',
     components: {
-        Header
+        Header,
+        Footer
     },
     data(){
         return {
