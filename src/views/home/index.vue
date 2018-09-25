@@ -12,7 +12,7 @@
                     <ul class="site-category-list clearfix">
                         <li @mouseover="categoryLiOver(index)" @mouseout="categoryLiOut(index)" ref="categoryLi" v-for="(item,index) in category" :key="index" class="category-item">
                             <a class="title" href="javascript:;">{{ item.name }}<i class="el-icon-arrow-right title-i"></i></a>
-                            <div class="children clearfix children-col-4">
+                            <div class="children clearfix children-col-4 animated fast">
                                 <div v-for="(child,child_index) in item._child" :key="child_index" class="children-list-col">
                                     <a class="link" href="javascript:;">
                                         <!-- <img class="thumb" src="//i1.mifile.cn/f/i/g/2015/cn-index/m8-80.png?width=80&amp;height=80" width="40" height="40" alt=""> -->
@@ -89,6 +89,7 @@
     </div>
 </template>
 <script>
+import animate from 'animate.css'
 import Header from '@/views/layout/Header'
 import Footer from '@/views/layout/Footer'
 import { banners, mobilePhones } from '@/api/index'
@@ -114,9 +115,11 @@ export default {
     methods:{
         categoryLiOver(index){
             this.$refs.categoryLi[index].classList.add('category-item-active')
+            this.$refs.categoryLi[index].getElementsByClassName('children')[0].classList.add('bounceInRight')
         },
         categoryLiOut(index){
             this.$refs.categoryLi[index].classList.remove('category-item-active')
+            this.$refs.categoryLi[index].getElementsByClassName('children')[0].classList.remove('bounceInRight')
         },
         productClassify(){
             productClassify().then(res => {
@@ -400,7 +403,7 @@ ul{
     overflow: hidden;
 }
 .site-category-list .children {
-    display: none;
+    display: none; 
     position: absolute;
     left: 234px;
     top: 0;
