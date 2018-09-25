@@ -419,7 +419,8 @@ ul{
 .site-category-list .children-list-col{
     float: left;
     width: 160px;
-    height: 76px;
+    /* height: 76px; */
+    height:100%;
     line-height: 76px;
     padding:0 0 0 15px;
     position: relative;

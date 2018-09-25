@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header></Header>
+        <Header ref="header"></Header>
         <div class="row container">
             <div class="preview">
                 <div class="preview-booth">
@@ -118,6 +118,7 @@ export default {
                         amount:this.amount,
                     }).then(res => {
                         this.$notify.success('加入购物车成功')
+                        this.$refs.header.getCartNum()
                     }).catch(error => {
                         this.$notify.warning(error.response.data.message)
                     })

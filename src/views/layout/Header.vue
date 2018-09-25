@@ -458,4 +458,7 @@ a:-webkit-any-link {
 #layoutHeaderUser{
   height:70%;
 }
+#layoutHeaderCart{
+    width:50px;
+}
 </style>
