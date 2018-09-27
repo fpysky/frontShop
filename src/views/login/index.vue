@@ -116,7 +116,7 @@ export default {
                     this.ruleForm.password = this.ruleForm.password.trim()
                     this.ruleForm.grant_type = 'password'
                     this.ruleForm.client_id = 2
-                    this.ruleForm.client_secret = '5IjevVN52Pe3GtiAy63WsViWfNj0L8igdscvcRtL'
+                    this.ruleForm.client_secret = 'CHCZspEuFcwHwFaEdJzzmSavfNWVVtpRxbkaMgzi'
                     this.ruleForm.scope = ''
                     this.ruleForm.provider = 'users'
                     this.loading = true

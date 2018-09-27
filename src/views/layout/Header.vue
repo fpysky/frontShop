@@ -37,34 +37,34 @@
           </ul>
           <ul class="layout-header-nav clearfix" id="layoutHeaderNav">
               <li class="layout-header-nav-item">
-                  <a href="//store.meizu.com" class="layout-header-nav-link" data-mtype="wmz_public_yt_store">商城</a>
+                  <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_store">商城</a>
               </li>
                   <li class="layout-header-nav-item">
-                      <a href="https://lists.meizu.com/page/list?categoryid=76" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_1">手机</a>
+                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_1">手机</a>
                   </li>
                   <li class="layout-header-nav-item">
-                      <a href="https://lists.meizu.com/page/list/?categoryid=231" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_2">声学</a>
+                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_2">声学</a>
                   </li>
                   <li class="layout-header-nav-item">
-                      <a href="https://lists.meizu.com/page/list/?categoryid=174" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_3">智能</a>
+                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_3">智能</a>
                   </li>
                   <li class="layout-header-nav-item">
-                      <a href="https://lists.meizu.com/page/list/?categoryid=222" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_4">生活</a>
+                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_4">生活</a>
                   </li>
               <li class="layout-header-nav-item">
-                  <a href="//www.flyme.cn/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_flyme">Flyme</a>
+                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_flyme">Flyme</a>
               </li>
               <li class="layout-header-nav-item">
-                  <a href="http://care.meizu.com/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_service">服务</a>
+                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_service">服务</a>
               </li>
               <li class="layout-header-nav-item">
-                  <a href="http://retail.meizu.com/index.html" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_offstore">专卖店</a>
+                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_offstore">专卖店</a>
               </li>
               <li class="layout-header-nav-item">
-                  <a href="//bbs.meizu.cn/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_bbs">社区</a>
+                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_bbs">社区</a>
               </li>
               <li class="layout-header-nav-item app-down">
-                  <a href="javascript:;?click=gw_public_yt_app" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_app">APP下载</a>
+                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_app">APP下载</a>
               </li>
           </ul>
           <!-- <div class="layout-header-nav-downmenu" id="layoutHeaderNavDownmenu"></div>
@@ -101,10 +101,10 @@
           <a href="/userCenter" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_login">个人中心</a>
         </li>
         <li class="layout-user-downmenu-item">
-          <a href="/register" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_register">{{name}}</a>
+          <a href="/userCenter" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_register">{{name}}</a>
         </li>
         <li class="layout-user-downmenu-item">
-          <a href="//ordercenter.meizu.com/list/index.html" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_myorder">我的订单</a>
+          <a href="/" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_myorder">我的订单</a>
         </li>
         <li class="layout-user-downmenu-item">
           <a href="/" @click.prevent="logout" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_mformy">退出</a>

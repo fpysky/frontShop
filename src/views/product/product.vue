@@ -102,8 +102,8 @@ export default {
         }
     },
     created(){
-        if(this.$route.params.id){
-            this.query.id = this.$route.params.id
+        if(this.$route.query.id){
+            this.query.id = this.$route.query.id
         } 
         this.products()
     },

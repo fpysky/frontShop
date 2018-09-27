@@ -137,7 +137,7 @@ export default {
                         let sendData = {
                             grant_type : 'password',
                             client_id : 2,
-                            client_secret : '5IjevVN52Pe3GtiAy63WsViWfNj0L8igdscvcRtL',
+                            client_secret : 'CHCZspEuFcwHwFaEdJzzmSavfNWVVtpRxbkaMgzi',
                             scope : '',
                             provider : 'users',
                             username : this.ruleForm.name,

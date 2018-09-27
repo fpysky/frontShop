@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="span16">
                                     <ul class="brick-list clearfix">
-                                        <li v-for="(item,index) in mobilePhone" :key="index" class="brick-item brick-item-m brick-item-m-2" data-gid="2182300110">
+                                        <li ref="mobilePhoneLi" @mouseover="mobilePhoneOver(index)"  @mouseout="mobilePhoneOut(index)" v-for="(item,index) in mobilePhone" :key="index" class="brick-item brick-item-m brick-item-m-2 animated" data-gid="2182300110">
                                             <div class="figure figure-img">
                                                 <a class="exposure" href="" @click.prevent="goProduct(item.id)">
                                                     <!-- <img src="//i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" width="160" height="160" alt="红米6A"> -->
@@ -113,6 +113,12 @@ export default {
         this.productClassify()
     },
     methods:{
+        mobilePhoneOver(index){
+            this.$refs.mobilePhoneLi[index].classList.add('tada')
+        },
+        mobilePhoneOut(index){
+            this.$refs.mobilePhoneLi[index].classList.remove('tada')
+        },
         categoryLiOver(index){
             this.$refs.categoryLi[index].classList.add('category-item-active')
             this.$refs.categoryLi[index].getElementsByClassName('children')[0].classList.add('bounceInRight')
@@ -136,10 +142,7 @@ export default {
             })
         },
         goProduct(id){
-            this.$router.push({
-                name:'/product',
-                params:{id: id}
-            })
+            this.$router.push({path:'product',query:{id:id}})
         },
         banners(){
             banners().then(res => {

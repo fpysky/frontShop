@@ -13,7 +13,7 @@
                 <a href="//ordercenter.meizu.com/list/index.html" class="ml " data-mtype="store_mc_order_me" data-mdesc="我的订单">我的订单</a>
                 <a href="//mcycle.meizu.com/repo/order/list" class="ml " data-mtype="store_mc_order_mcycle" data-mdesc="我的回购单">我的回购单</a>
                 <a href="javascript:;" class="type-title"><i class="iconfont icon-selfCenter"></i>个人中心</a>
-                <a href="/address" class="ml " data-mtype="store_mc_me_address" data-mdesc="地址管理">地址管理</a>
+                <a href="/address" @click.prevent="goAddress" class="ml " data-mtype="store_mc_me_address" data-mdesc="地址管理">地址管理</a>
                 <a href="//me.meizu.com/member/favorite/index" class="ml " data-mtype="store_mc_me_favorite" data-mdesc="我的收藏">我的收藏</a>
                 <a href="//me.meizu.com/member/message/index" class="ml " data-mtype="store_mc_me_msg" data-mdesc="消息提醒">消息提醒</a>
                 <a href="//me.meizu.com/member/advice/index" class="ml " data-mtype="store_mc_me_suggest" data-mdesc="建议反馈">建议反馈</a>
@@ -118,7 +118,9 @@ export default {
     created(){
     },
     methods:{
-        
+        goAddress(){
+            this.$router.push({name:'/address'})
+        },
     }
 }
 </script>
