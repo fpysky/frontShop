@@ -104,7 +104,7 @@
           <a href="/userCenter" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_register">{{name}}</a>
         </li>
         <li class="layout-user-downmenu-item">
-          <a href="/" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_myorder">我的订单</a>
+          <a href="/orders" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_myorder">我的订单</a>
         </li>
         <li class="layout-user-downmenu-item">
           <a href="/" @click.prevent="logout" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_mformy">退出</a>

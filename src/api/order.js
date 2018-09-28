@@ -1,12 +1,11 @@
 import request from '@/utils/request'
 
-// export function fetchCartList(query) {
-//   return request({
-//     url: 'api/cart',
-//     method: 'get',
-//     params: query
-//   })
-// }
+export function fetchOrderList() {
+  return request({
+    url: 'api/orders',
+    method: 'get'
+  })
+}
 
 export function createOrder(data) {
     return request({

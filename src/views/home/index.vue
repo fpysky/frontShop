@@ -4,9 +4,11 @@
         <div class="home">
             <div class="home-carousel">
                 <el-carousel height="480px" :interval="5000" arrow="always">
-                    <el-carousel-item v-for="item in banner" :key="item.id">
-                    <img style="width:100%;height:100%;" :src="item.image" alt="">
-                    </el-carousel-item>
+                        <el-carousel-item v-for="item in banner" :key="item.id">
+                            <a href="" @click.prevent="goProduct(item.product_id)">
+                                <img style="width:100%;height:100%;" :src="item.image" alt="">
+                            </a>
+                        </el-carousel-item>
                 </el-carousel>
                 <div class="site-category">
                     <ul class="site-category-list clearfix">
