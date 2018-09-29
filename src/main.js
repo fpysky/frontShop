@@ -20,8 +20,8 @@ Vue.use(Element, {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  router,
 })

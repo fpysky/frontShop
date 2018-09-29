@@ -31,3 +31,11 @@ export function deleteAddress(data) {
       data
     })
 }
+
+export function search(query) {
+  return request({
+    url: 'api/search',
+    method: 'get',
+    params: query
+  })
+}

@@ -51,14 +51,14 @@
                 <div class="container">
                     <div class="home-brick-box home-brick-row-2-box xm-plain-box J_itemBox J_brickBox no-comment-total is-visible loaded">
                         <div class="box-hd">
-                            <h2 class="title">手机</h2>
+                            <h2 class="title">商品</h2>
                         </div>
                         <div class="box-bd J_brickBd">
                             <div class="row">
                                 <div class="span4 span-first">
                                     <ul class="brick-promo-list clearfix">
                                         <li class="brick-item brick-item-l">
-                                            <a href="https://item.mi.com/product/10000111.html" class="exposure" data-stat-aid="AA20720" data-stat-pid="2_57_1_331" data-log_code="31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432" target="_blank" data-stat-id="AA20720+2_57_1_331" onclick="_msq.push(['trackEvent', '81190ccc4d52f577-AA20720+2_57_1_331', 'https://item.mi.com/product/10000111.html', 'pcpid', '31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432']);"><img src="//i1.mifile.cn/a4/xmad_15323220713837_GLBVX.jpg" alt=""></a>
+                                            <a href="/" class="exposure" data-stat-aid="AA20720" data-stat-pid="2_57_1_331" data-log_code="31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432" target="_blank" data-stat-id="AA20720+2_57_1_331" onclick="_msq.push(['trackEvent', '81190ccc4d52f577-AA20720+2_57_1_331', 'https://item.mi.com/product/10000111.html', 'pcpid', '31pchomephone_left001018#t=normal&amp;act=other&amp;page=home&amp;bid=3185160.1&amp;adm=5432']);"><img src="//i1.mifile.cn/a4/xmad_15323220713837_GLBVX.jpg" alt=""></a>
                                         </li>
                                     </ul>
                                 </div>

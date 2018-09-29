@@ -13,13 +13,20 @@
     <div class="layout-header clearfix" id="layoutHeader">
       <div class="mzcontainer">
           <div class="layout-header-logo">
-              <a href="/" class="layout-header-logo-link" alt="魅族科技" data-mtype="wmz_public_yt_logo">
+              <!-- <a href="/" class="layout-header-logo-link" alt="魅族科技" data-mtype="wmz_public_yt_logo">
                   <img src="data:image/png;base64,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" style="max-width:125px;margin-top:  28px;">
+              </a> -->
+              <a href="/">
+                  <img style="width:200px;height:80px;" src="@/assets/huanduguoqing.png" alt="">
               </a>
           </div>
           <ul class="layout-header-service clearfix">
               <li class="layout-header-service-item layout-header-service-search mz-autocomlete" id="layoutHeaderSearch">
-                <input class="mz-autocomlete-input" placeholder="魅族 16th"><img class="layout-img-search" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAAAXNSR0IArs4c6QAAA4VJREFUSA21Vz1oU1EU7ntNGweldZWiiyB0KaHVgD+LS0HrJtZBpCC0aZMsaju42Mkh1ilpTDrVn8XiIupQIVsdktihS0EQQaiVLkKxQ9KGxO97vvO4L76bJnnpg+Sec+453/neub/P6GryicfjwUqlcqFarQ7UarVTDDMMY9s0za1AIFBIJpPlJqE83QxPq2KMRCJjSD6BpKMgcFzpckT07aFvFaSWM5nMB6ejBUFLBAT49s+AdbkFPLquoUL30+l0sZU4TyJTU1MRgCTxlgEVDG++CX0D9m3aoXOIhqAPUpcH9grkeDabzYjtsPY/IiDxFMAPJRCgZegpvGUGb/lN7Go7MzNzFvMnAt8YfIPSB30BZGZFb9S6iLASAHquBOR7enrGFxcXfyg2rRiNRs8cHBy8gUNYnEBmupnKOEQ4J0DiM37WcADgbW9v751WVwNX1/7+/mvg3CQZ4FTwu4RJXBByXq0pRk5MIQFbvh0SxCJxxhKDOjHtSU9V+1gVsZfoe3qBfRnz4Vyzw6FD5jBh3nwFEWvOYGnfaLS0rYpwnxBABKb8kiAWMYgluGoOsamtyTFFFUbFyNUhst9WxWIO5tJhmty2wdzaMeG8qVuiOoBGdmIRkz7MwVw6fxMlG1A6NxS5U6KDWZfLhW+CqXWA0QrZ2jFdHj4VFVPNVQ/rLN/6jqPQMUw1Ha6JTqcKkJ3q6AJatddh/tLFY3mbW0rnkCJ3SnQw63K58E0ssQJY79GKMRzkAeby8KEQi5iEYA7m0sGZ3JLhvCoOPEVF9tuqWMzR6NyyJitKtixJwTzG7Vn0dltiEEviIb8Q2au1iNhnwBodwDzIo7zRLugFpNoYSwxiKfbZycnJ04ruEp3li6o8AGverPiEeZS3Q4YxjCWGhWT/gdQViBu484yrdpGd+wgNR3ExAoF3eMnraANOUsN42dfXF0skEn/E1i0C2/X19S8jIyM8dy7adn46TA8PD/eHw+HvxWLxt213NVwdoVDoEXxfocOZX6jwwtLS0j3Ef4J8FX0n7cChUql0C/Y8cv6kzVUR28mqDOSOXp7n5uZO7O7upkD2ruThVID+GGSfeBKho5/PCc433dUQuLdx+PFe3C+E0I5piYiTfXubAPuOfWBx9QCP91pOYD6HE/nn19U1Pz9/bGdn5zyPcgBYZxLA2v7kXFlZ6c7lcteAVcXQfPwLwMHO9PXwzvQAAAAASUVORK5CYII=">
+                <input v-model="searchKeyword" @keyup="search" class="mz-autocomlete-input" placeholder="魅族 16th">
+                <img class="layout-img-search" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAAAXNSR0IArs4c6QAAA4VJREFUSA21Vz1oU1EU7ntNGweldZWiiyB0KaHVgD+LS0HrJtZBpCC0aZMsaju42Mkh1ilpTDrVn8XiIupQIVsdktihS0EQQaiVLkKxQ9KGxO97vvO4L76bJnnpg+Sec+453/neub/P6GryicfjwUqlcqFarQ7UarVTDDMMY9s0za1AIFBIJpPlJqE83QxPq2KMRCJjSD6BpKMgcFzpckT07aFvFaSWM5nMB6ejBUFLBAT49s+AdbkFPLquoUL30+l0sZU4TyJTU1MRgCTxlgEVDG++CX0D9m3aoXOIhqAPUpcH9grkeDabzYjtsPY/IiDxFMAPJRCgZegpvGUGb/lN7Go7MzNzFvMnAt8YfIPSB30BZGZFb9S6iLASAHquBOR7enrGFxcXfyg2rRiNRs8cHBy8gUNYnEBmupnKOEQ4J0DiM37WcADgbW9v751WVwNX1/7+/mvg3CQZ4FTwu4RJXBByXq0pRk5MIQFbvh0SxCJxxhKDOjHtSU9V+1gVsZfoe3qBfRnz4Vyzw6FD5jBh3nwFEWvOYGnfaLS0rYpwnxBABKb8kiAWMYgluGoOsamtyTFFFUbFyNUhst9WxWIO5tJhmty2wdzaMeG8qVuiOoBGdmIRkz7MwVw6fxMlG1A6NxS5U6KDWZfLhW+CqXWA0QrZ2jFdHj4VFVPNVQ/rLN/6jqPQMUw1Ha6JTqcKkJ3q6AJatddh/tLFY3mbW0rnkCJ3SnQw63K58E0ssQJY79GKMRzkAeby8KEQi5iEYA7m0sGZ3JLhvCoOPEVF9tuqWMzR6NyyJitKtixJwTzG7Vn0dltiEEviIb8Q2au1iNhnwBodwDzIo7zRLugFpNoYSwxiKfbZycnJ04ruEp3li6o8AGverPiEeZS3Q4YxjCWGhWT/gdQViBu484yrdpGd+wgNR3ExAoF3eMnraANOUsN42dfXF0skEn/E1i0C2/X19S8jIyM8dy7adn46TA8PD/eHw+HvxWLxt213NVwdoVDoEXxfocOZX6jwwtLS0j3Ef4J8FX0n7cChUql0C/Y8cv6kzVUR28mqDOSOXp7n5uZO7O7upkD2ruThVID+GGSfeBKho5/PCc433dUQuLdx+PFe3C+E0I5piYiTfXubAPuOfWBx9QCP91pOYD6HE/nn19U1Pz9/bGdn5zyPcgBYZxLA2v7kXFlZ6c7lcteAVcXQfPwLwMHO9PXwzvQAAAAASUVORK5CYII=">
+                <div class="layoutHeaderSearchBox">
+                    <li v-for="(item,index) in searchResults" :key="index"><a href="">{{ item.title}}</a></li>
+                </div>
               </li>
               <li class="layout-header-service-item" id="layoutHeaderUser" @mouseover="layoutHeaderUserOver('over')" @mouseout="layoutHeaderUserOver('out')">
                   <a class="layout-header-service-link" href="/" @click.prevent="goUserCenter" data-mtype="wmz_public_yt_mycenter">
@@ -36,36 +43,36 @@
               </li>
           </ul>
           <ul class="layout-header-nav clearfix" id="layoutHeaderNav">
-              <li class="layout-header-nav-item">
-                  <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_store">商城</a>
-              </li>
-                  <li class="layout-header-nav-item">
-                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_1">手机</a>
-                  </li>
-                  <li class="layout-header-nav-item">
-                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_2">声学</a>
-                  </li>
-                  <li class="layout-header-nav-item">
-                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_3">智能</a>
-                  </li>
-                  <li class="layout-header-nav-item">
-                      <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_4">生活</a>
-                  </li>
-              <li class="layout-header-nav-item">
-                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_flyme">Flyme</a>
-              </li>
-              <li class="layout-header-nav-item">
-                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_service">服务</a>
-              </li>
-              <li class="layout-header-nav-item">
-                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_offstore">专卖店</a>
-              </li>
-              <li class="layout-header-nav-item">
-                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_bbs">社区</a>
-              </li>
-              <li class="layout-header-nav-item app-down">
-                  <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_app">APP下载</a>
-              </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_store">商城</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_1">手机</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_2">声学</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_3">智能</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" data-mtype="wmz_public_yt_custom_4">生活</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_flyme">音乐</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_service">服务</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_offstore">专卖店</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_bbs">社区</a>
+            </li>
+            <li class="layout-header-nav-item app-down">
+                <a href="/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_app">APP下载</a>
+            </li>
           </ul>
           <!-- <div class="layout-header-nav-downmenu" id="layoutHeaderNavDownmenu"></div>
           <div class="layout-header-app-down" id="layoutHeaderAppDown">
@@ -117,11 +124,14 @@
 import { mapGetters } from 'vuex'
 import { getToken } from '@/utils/auth'
 import { getCartNum } from '@/api/cart'
+import { search } from '@/api/index'
 export default {
   name: 'Header',
   data () {
     return { 
         cartNum:0,
+        searchKeyword:'',
+        searchResults:'',
     }
   },
   computed: {
@@ -137,6 +147,15 @@ export default {
       }
   },
   methods:{
+    search(){
+        if(this.searchKeyword != ''){
+            search({searchKeyword:this.searchKeyword}).then(res => {
+                this.searchResults = res.data.list
+            }).catch(error => {
+
+            })
+        }
+    },
     getCartNum(){
         getCartNum().then(res => {
             this.cartNum = res.data.num
@@ -460,5 +479,14 @@ a:-webkit-any-link {
 }
 #layoutHeaderCart{
     width:50px;
+}
+.layoutHeaderSearchBox{
+    position:absolute;
+    top:35px;
+    left:0;
+    width:300px;
+    height:500px;
+    background-color:#cccc;
+    border-radius: 5px;
 }
 </style>

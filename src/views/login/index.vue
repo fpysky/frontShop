@@ -122,7 +122,7 @@ export default {
                     this.loading = true
                     this.$store.dispatch('LoginByUsername', this.ruleForm).then(() => {
                         this.loading = false
-                        this.$router.push({ path: '/' })
+                        this.$router.go(-1)
                     }).catch(error => {
                         console.log(error)
                         this.loading = false

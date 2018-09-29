@@ -75,10 +75,10 @@
                     </span>
                 </div>
                 <div class="cart-footer-right">
-                    <span class="cart-footer-sum">
+                    <!-- <span class="cart-footer-sum">
                     已优惠<span class="cart-footer-num red" id="totalDiscount">0.00</span>元，
                     合计(不含运费)：<span class="cart-footer-total" id="totalPrice">0.00</span>
-                    </span>
+                    </span> -->
                     <div @click="settle" ref="cartSubmit" class="mz-btn success to-order-btn" id="cartSubmit" data-mdesc="去结算按钮" data-mtype="store_cart_checkout" disabled="disabled">去结算</div>
                 </div>
                 </div>
