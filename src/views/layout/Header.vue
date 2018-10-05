@@ -24,8 +24,17 @@
               <li class="layout-header-service-item layout-header-service-search mz-autocomlete" id="layoutHeaderSearch">
                 <input v-model="searchKeyword" @keyup="search" class="mz-autocomlete-input" placeholder="魅族 16th">
                 <img class="layout-img-search" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAAAXNSR0IArs4c6QAAA4VJREFUSA21Vz1oU1EU7ntNGweldZWiiyB0KaHVgD+LS0HrJtZBpCC0aZMsaju42Mkh1ilpTDrVn8XiIupQIVsdktihS0EQQaiVLkKxQ9KGxO97vvO4L76bJnnpg+Sec+453/neub/P6GryicfjwUqlcqFarQ7UarVTDDMMY9s0za1AIFBIJpPlJqE83QxPq2KMRCJjSD6BpKMgcFzpckT07aFvFaSWM5nMB6ejBUFLBAT49s+AdbkFPLquoUL30+l0sZU4TyJTU1MRgCTxlgEVDG++CX0D9m3aoXOIhqAPUpcH9grkeDabzYjtsPY/IiDxFMAPJRCgZegpvGUGb/lN7Go7MzNzFvMnAt8YfIPSB30BZGZFb9S6iLASAHquBOR7enrGFxcXfyg2rRiNRs8cHBy8gUNYnEBmupnKOEQ4J0DiM37WcADgbW9v751WVwNX1/7+/mvg3CQZ4FTwu4RJXBByXq0pRk5MIQFbvh0SxCJxxhKDOjHtSU9V+1gVsZfoe3qBfRnz4Vyzw6FD5jBh3nwFEWvOYGnfaLS0rYpwnxBABKb8kiAWMYgluGoOsamtyTFFFUbFyNUhst9WxWIO5tJhmty2wdzaMeG8qVuiOoBGdmIRkz7MwVw6fxMlG1A6NxS5U6KDWZfLhW+CqXWA0QrZ2jFdHj4VFVPNVQ/rLN/6jqPQMUw1Ha6JTqcKkJ3q6AJatddh/tLFY3mbW0rnkCJ3SnQw63K58E0ssQJY79GKMRzkAeby8KEQi5iEYA7m0sGZ3JLhvCoOPEVF9tuqWMzR6NyyJitKtixJwTzG7Vn0dltiEEviIb8Q2au1iNhnwBodwDzIo7zRLugFpNoYSwxiKfbZycnJ04ruEp3li6o8AGverPiEeZS3Q4YxjCWGhWT/gdQViBu484yrdpGd+wgNR3ExAoF3eMnraANOUsN42dfXF0skEn/E1i0C2/X19S8jIyM8dy7adn46TA8PD/eHw+HvxWLxt213NVwdoVDoEXxfocOZX6jwwtLS0j3Ef4J8FX0n7cChUql0C/Y8cv6kzVUR28mqDOSOXp7n5uZO7O7upkD2ruThVID+GGSfeBKho5/PCc433dUQuLdx+PFe3C+E0I5piYiTfXubAPuOfWBx9QCP91pOYD6HE/nn19U1Pz9/bGdn5zyPcgBYZxLA2v7kXFlZ6c7lcteAVcXQfPwLwMHO9PXwzvQAAAAASUVORK5CYII=">
-                <div class="layoutHeaderSearchBox">
-                    <li v-for="(item,index) in searchResults" :key="index"><a href="">{{ item.title}}</a></li>
+                <div ref="layoutHeaderSearchBox" class="layoutHeaderSearchBox animated fast">
+                    <div class="category">
+                        <div class="name">商品</div>
+                        <a v-for="(item,index) in searchResults" :key="index" class="result" href="https://laravel-china.org/docs/laravel/5.6/cache/1387">
+                            <div class="content">
+                                <img style="width:50px;height:50px;" src="@/assets/huanduguoqing.png" alt="">
+                                <div style="font-size:12px;display:inline-block;">{{ item.title}}</div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- <li v-for="(item,index) in searchResults" :key="index"><a href="">{{ item.title}}</a></li> -->
                 </div>
               </li>
               <li class="layout-header-service-item" id="layoutHeaderUser" @mouseover="layoutHeaderUserOver('over')" @mouseout="layoutHeaderUserOver('out')">
@@ -125,6 +134,7 @@ import { mapGetters } from 'vuex'
 import { getToken } from '@/utils/auth'
 import { getCartNum } from '@/api/cart'
 import { search } from '@/api/index'
+import animate from 'animate.css'
 export default {
   name: 'Header',
   data () {
@@ -151,6 +161,13 @@ export default {
         if(this.searchKeyword != ''){
             search({searchKeyword:this.searchKeyword}).then(res => {
                 this.searchResults = res.data.list
+                if(this.searchResults.length != 0){
+                    this.$refs.layoutHeaderSearchBox.classList.add('show')
+                    this.$refs.layoutHeaderSearchBox.classList.add('zoomIn')
+                }else{
+                    this.$refs.layoutHeaderSearchBox.classList.remove('show')
+                    this.$refs.layoutHeaderSearchBox.classList.remove('zoomIn')
+                }
             }).catch(error => {
 
             })
@@ -321,6 +338,9 @@ a:-webkit-any-link {
     border: 1px solid rgba(0,0,0,.15);
     line-height: 28px;
 }
+.layout-header .layout-header-service .layout-header-service-item.layout-header-service-search .show{
+    display:block;
+}
 .layout-header .layout-header-service .layout-header-service-item {
     position: relative;
     float: left;
@@ -481,12 +501,51 @@ a:-webkit-any-link {
     width:50px;
 }
 .layoutHeaderSearchBox{
+    display:none;
     position:absolute;
     top:35px;
     left:0;
-    width:300px;
-    height:500px;
-    background-color:#cccc;
+    width:400px;
     border-radius: 5px;
+    box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+    background-color:#fff;
+}
+.layoutHeaderSearchBox .category {
+    background: #F3F4F5;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+    -webkit-transition: background 0.1s ease, border-color 0.1s ease;
+    transition: background 0.1s ease, border-color 0.1s ease;
+}
+.layoutHeaderSearchBox .category .name {
+    width: 100px;
+    background: transparent;
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    float: 1em;
+    float: left;
+    padding: 0.4em 1em;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.4);
+}
+.layoutHeaderSearchBox .category .result {
+    background: #FFFFFF;
+    margin-left: 132px;
+    border-left: 1px solid rgba(34, 36, 38, 0.15);
+    border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+    -webkit-transition: background 0.1s ease, border-color 0.1s ease;
+    transition: background 0.1s ease, border-color 0.1s ease;
+    padding: 0.85714286em 1.14285714em;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.87);
+    line-height: 1.33;
+    border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+}
+.layoutHeaderSearchBox .category .result .content{
+    text-align: left;
 }
 </style>
