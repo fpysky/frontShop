@@ -123,11 +123,11 @@ export default {
         },
         categoryLiOver(index){
             this.$refs.categoryLi[index].classList.add('category-item-active')
-            this.$refs.categoryLi[index].getElementsByClassName('children')[0].classList.add('bounceInRight')
+            this.$refs.categoryLi[index].getElementsByClassName('children')[0].classList.add('pulse')
         },
         categoryLiOut(index){
             this.$refs.categoryLi[index].classList.remove('category-item-active')
-            this.$refs.categoryLi[index].getElementsByClassName('children')[0].classList.remove('bounceInRight')
+            this.$refs.categoryLi[index].getElementsByClassName('children')[0].classList.remove('pulse')
         },
         productClassify(){
             productClassify().then(res => {

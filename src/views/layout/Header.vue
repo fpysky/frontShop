@@ -22,20 +22,8 @@
           </div>
           <ul class="layout-header-service clearfix">
               <li class="layout-header-service-item layout-header-service-search mz-autocomlete" id="layoutHeaderSearch">
-                <input v-model="searchKeyword" @keyup="search" class="mz-autocomlete-input" placeholder="魅族 16th">
+                <input @blur="searchBlur" v-model="searchKeyword" @click="search" @keyup="search" class="mz-autocomlete-input" placeholder="搜索点什么吧">
                 <img class="layout-img-search" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAAAXNSR0IArs4c6QAAA4VJREFUSA21Vz1oU1EU7ntNGweldZWiiyB0KaHVgD+LS0HrJtZBpCC0aZMsaju42Mkh1ilpTDrVn8XiIupQIVsdktihS0EQQaiVLkKxQ9KGxO97vvO4L76bJnnpg+Sec+453/neub/P6GryicfjwUqlcqFarQ7UarVTDDMMY9s0za1AIFBIJpPlJqE83QxPq2KMRCJjSD6BpKMgcFzpckT07aFvFaSWM5nMB6ejBUFLBAT49s+AdbkFPLquoUL30+l0sZU4TyJTU1MRgCTxlgEVDG++CX0D9m3aoXOIhqAPUpcH9grkeDabzYjtsPY/IiDxFMAPJRCgZegpvGUGb/lN7Go7MzNzFvMnAt8YfIPSB30BZGZFb9S6iLASAHquBOR7enrGFxcXfyg2rRiNRs8cHBy8gUNYnEBmupnKOEQ4J0DiM37WcADgbW9v751WVwNX1/7+/mvg3CQZ4FTwu4RJXBByXq0pRk5MIQFbvh0SxCJxxhKDOjHtSU9V+1gVsZfoe3qBfRnz4Vyzw6FD5jBh3nwFEWvOYGnfaLS0rYpwnxBABKb8kiAWMYgluGoOsamtyTFFFUbFyNUhst9WxWIO5tJhmty2wdzaMeG8qVuiOoBGdmIRkz7MwVw6fxMlG1A6NxS5U6KDWZfLhW+CqXWA0QrZ2jFdHj4VFVPNVQ/rLN/6jqPQMUw1Ha6JTqcKkJ3q6AJatddh/tLFY3mbW0rnkCJ3SnQw63K58E0ssQJY79GKMRzkAeby8KEQi5iEYA7m0sGZ3JLhvCoOPEVF9tuqWMzR6NyyJitKtixJwTzG7Vn0dltiEEviIb8Q2au1iNhnwBodwDzIo7zRLugFpNoYSwxiKfbZycnJ04ruEp3li6o8AGverPiEeZS3Q4YxjCWGhWT/gdQViBu484yrdpGd+wgNR3ExAoF3eMnraANOUsN42dfXF0skEn/E1i0C2/X19S8jIyM8dy7adn46TA8PD/eHw+HvxWLxt213NVwdoVDoEXxfocOZX6jwwtLS0j3Ef4J8FX0n7cChUql0C/Y8cv6kzVUR28mqDOSOXp7n5uZO7O7upkD2ruThVID+GGSfeBKho5/PCc433dUQuLdx+PFe3C+E0I5piYiTfXubAPuOfWBx9QCP91pOYD6HE/nn19U1Pz9/bGdn5zyPcgBYZxLA2v7kXFlZ6c7lcteAVcXQfPwLwMHO9PXwzvQAAAAASUVORK5CYII=">
-                <div ref="layoutHeaderSearchBox" class="layoutHeaderSearchBox animated fast">
-                    <div class="category">
-                        <div class="name">商品</div>
-                        <a v-for="(item,index) in searchResults" :key="index" class="result" href="https://laravel-china.org/docs/laravel/5.6/cache/1387">
-                            <div class="content">
-                                <img style="width:50px;height:50px;" src="@/assets/huanduguoqing.png" alt="">
-                                <div style="font-size:12px;display:inline-block;">{{ item.title}}</div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- <li v-for="(item,index) in searchResults" :key="index"><a href="">{{ item.title}}</a></li> -->
-                </div>
               </li>
               <li class="layout-header-service-item" id="layoutHeaderUser" @mouseover="layoutHeaderUserOver('over')" @mouseout="layoutHeaderUserOver('out')">
                   <a class="layout-header-service-link" href="/" @click.prevent="goUserCenter" data-mtype="wmz_public_yt_mycenter">
@@ -97,7 +85,7 @@
           </div> -->
       </div>
     </div>
-    <div class="layout-user-downmenu" @mouseover="layoutHeaderUserOver('over')" @mouseout="layoutHeaderUserOver('out')" ref="layoutUserDownmenu" style="top: 186px; left: 1460.5px;">
+    <div class="layout-user-downmenu animated fast" @mouseover="layoutHeaderUserOver('over')" @mouseout="layoutHeaderUserOver('out')" ref="layoutUserDownmenu" style="top: 186px; left: 1460.5px;">
       <ul v-if="name == ''" class="layout-user-downmenu-list">
         <li class="layout-user-downmenu-item">
           <a href="/login" class="layout-user-downmenu-link" data-mtype="wmz_public_grzx_login">立即登录</a>
@@ -127,6 +115,18 @@
         </li>
       </ul>
     </div>
+    <div @mouseout="searchContentOut" @mouseover="searchContentOver" ref="layoutHeaderSearchBox" class="layoutHeaderSearchBox animated fast">
+        <div v-if="searchResults.length != 0" class="category">
+            <div class="name">商品</div>
+            <a v-for="(item,index) in searchResults" :key="index" class="result" :href="'/product?id='+item.id">
+                <div class="content">
+                    <img style="width:50px;height:50px;" :src="item.image" alt="">
+                    <div style="font-size:12px;display:inline-block;">{{ item.title}}</div>
+                </div>
+            </a>
+        </div>
+        <div v-else class="description">没有内容</div>
+    </div>
   </div>
 </template>
 <script>
@@ -142,6 +142,7 @@ export default {
         cartNum:0,
         searchKeyword:'',
         searchResults:'',
+        isSearchBlur:true,
     }
   },
   computed: {
@@ -157,17 +158,26 @@ export default {
       }
   },
   methods:{
+    searchContentOver(){
+        this.isSearchBlur = false
+    },
+    searchContentOut(){
+        this.isSearchBlur = true
+    },
+    searchBlur(){
+        if(this.isSearchBlur){
+            this.$refs.layoutHeaderSearchBox.classList.remove('show')
+        }
+    },
     search(){
         if(this.searchKeyword != ''){
             search({searchKeyword:this.searchKeyword}).then(res => {
                 this.searchResults = res.data.list
-                if(this.searchResults.length != 0){
-                    this.$refs.layoutHeaderSearchBox.classList.add('show')
-                    this.$refs.layoutHeaderSearchBox.classList.add('zoomIn')
-                }else{
-                    this.$refs.layoutHeaderSearchBox.classList.remove('show')
-                    this.$refs.layoutHeaderSearchBox.classList.remove('zoomIn')
-                }
+                this.searchResults.forEach(element => {
+                    element.image = process.env.BASE_API + element.image
+                })
+                this.$refs.layoutHeaderSearchBox.classList.add('show')
+                this.$refs.layoutHeaderSearchBox.classList.add('zoomIn')
             }).catch(error => {
 
             })
@@ -190,8 +200,10 @@ export default {
     layoutHeaderUserOver(eventName){
       if(eventName == 'over'){
         this.$refs.layoutUserDownmenu.classList.add("layout-user-downmenu-show")
+        this.$refs.layoutUserDownmenu.classList.add("bounceInDown")
       }else if(eventName == 'out'){
         this.$refs.layoutUserDownmenu.classList.remove("layout-user-downmenu-show")
+        this.$refs.layoutUserDownmenu.classList.remove("bounceInDown")
       }
     },
     logout() {
@@ -338,9 +350,6 @@ a:-webkit-any-link {
     border: 1px solid rgba(0,0,0,.15);
     line-height: 28px;
 }
-.layout-header .layout-header-service .layout-header-service-item.layout-header-service-search .show{
-    display:block;
-}
 .layout-header .layout-header-service .layout-header-service-item {
     position: relative;
     float: left;
@@ -465,7 +474,6 @@ a:-webkit-any-link {
     font-size: 12px;
     padding-top: 4px;
     overflow: hidden;
-    animation: .3s ease showUserDownMenu forwards 1;
 }
 .layout-user-downmenu-show{
   display:block;
@@ -501,14 +509,27 @@ a:-webkit-any-link {
     width:50px;
 }
 .layoutHeaderSearchBox{
-    display:none;
-    position:absolute;
-    top:35px;
-    left:0;
+    display: none;
+    z-index: 999;
+    font-size: 12px;
+    overflow: hidden;
+    position: absolute;
+    top: 186px;
+    left: 1300.5px;
     width:400px;
     border-radius: 5px;
     box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
     background-color:#fff;
+    animation-duration: .6s;
+    min-height:50px;
+}
+.layoutHeaderSearchBox .description {
+    margin-top: 0.25rem;
+    font-size: 1.3em;
+    color: rgba(0, 0, 0, 0.87);
+    margin:10px;
+    text-align: center;
+    animation-duration: 0s;
 }
 .layoutHeaderSearchBox .category {
     background: #F3F4F5;
@@ -547,5 +568,8 @@ a:-webkit-any-link {
 }
 .layoutHeaderSearchBox .category .result .content{
     text-align: left;
+}
+.show{
+    display:block;
 }
 </style>
