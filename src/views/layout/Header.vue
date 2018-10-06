@@ -121,7 +121,7 @@
             <a v-for="(item,index) in searchResults" :key="index" class="result" :href="'/product?id='+item.id">
                 <div class="content">
                     <img style="width:50px;height:50px;" :src="item.image" alt="">
-                    <div style="font-size:12px;display:inline-block;">{{ item.title}}</div>
+                    <div style="font-size:12px;display:inline-block;height:50px;line-height:50px;margin-left:10px;">{{ item.title}}</div>
                 </div>
             </a>
         </div>
