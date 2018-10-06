@@ -1,10 +1,10 @@
 <template>
     <div id="login">
         <div class="ucSimpleHeader" id="header">
-            <a href="/" class="meizuLogo"><i class="i_icon" :style="{background:'url('+ baseUrl +') -2px -4px no-repeat'}"></i></a>
+            <a href="/" class="meizuLogo"><img style="vertical-align: middle;" src="@/assets/logo.png" alt=""></a>
         </div>
-        <div class="banner-box">
-            <div class="login-form">
+        <div class="banner-box" :style="{background:'url('+ loginBackground +') no-repeat center'}">
+            <div class="login-form animated bounceInRight fast">
                 <el-form :model="ruleForm" ref="ruleForm" label-width="0px" style="text-align:center;">
                     <div class="login-form-title">
                         <span>账号登陆</span>
@@ -29,13 +29,18 @@
 <script>
 import flymeUrl from "@/assets/flyme.png"
 import baseUrl from "@/assets/base.png"
+import loginBackground from "@/assets/login-background.jpg"
+import logo from "@/assets/logo.png"
 import '@/gt'
 import { geetest_api_v1, valiGeet } from '@/api/login'
+import 'animate.css'
 export default {
     data(){
         return {
             flymeUrl:flymeUrl,
             baseUrl:baseUrl,
+            loginBackground:loginBackground,
+            logo:logo,
             ruleForm:{
                 username:'',
                 password:'',
@@ -142,8 +147,6 @@ export default {
 <style scoped>
 .ucSimpleHeader {
     height: auto;
-    padding-top: 28px;
-    padding-bottom: 40px;
 }
 .ucSimpleHeader {
     margin: 0 auto;
@@ -157,11 +160,11 @@ div, h1, h2, h3, h4, p, form, label, input, textarea, img, span, dl, ul, li {
     list-style: none;
 }
 .meizuLogo {
-    float: left;
-    height: 20px;
-    width: 110px;
+    height: 100%;
+    width: 200px;
     overflow: hidden;
     display: block;
+    padding:10px 0;
 }
 a:-webkit-any-link {
     color: -webkit-link;
@@ -198,7 +201,8 @@ a:-webkit-any-link {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(//uc-res.mzres.com/resources/uc/wlogin/member/images/banner.jpg) no-repeat center;
+    /* background: url(//uc-res.mzres.com/resources/uc/wlogin/member/images/banner.jpg) no-repeat center; */
+    /* background: url(@/assets/login-background.jpg) no-repeat center; */
     background-size: contain;
 }
 .login-form{
