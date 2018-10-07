@@ -224,15 +224,14 @@ a:-webkit-any-link {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background: url(//uc-res.mzres.com/resources/uc/wlogin/member/images/banner.jpg) no-repeat center; */
     background-size: contain;
 }
 .login-form{
     width:280px;
     min-height:300px;
     position:absolute;
-    top:20%;
-    left:60%;
+    top:15%;
+    left:62%;
     background-color:#fff;
     padding:0 26px 26px 26px;
 }

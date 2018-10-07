@@ -21,6 +21,8 @@
                         </div>
                     </div>
                     <el-button :loading="loading" style="width:100%;" type="primary" @click="handleLogin">登陆</el-button>
+                    <hr>
+                    <a @click.prevent="goGithubLogin" href="" title="可以通过GitHub登陆哟~"><img style="width:30px;height:30px;" src="@/assets/github.png" alt=""></a>
                 </el-form>
             </div>
         </div>
@@ -34,6 +36,7 @@ import logo from "@/assets/logo.png"
 import '@/gt'
 import { geetest_api_v1, valiGeet } from '@/api/login'
 import 'animate.css'
+import { setToken } from '@/utils/auth'
 export default {
     data(){
         return {
@@ -52,8 +55,18 @@ export default {
     },
     created(){
         this._initGeetest()
+        if(this.$route.query.accessToken){
+            this.$store.dispatch('LoginByThirdparty', {accessToken:this.$route.query.accessToken}).then(() => {
+                window.location.href = '/'
+            }).catch(error => {
+                console.log(error) 
+            })
+        } 
     },
     methods:{
+        goGithubLogin(){
+            window.location.href = process.env.BASE_API + 'api/login/github'
+        },
         _initGeetest(){
             let _this = this
             this.initGeetest(function(captchaObj){
@@ -209,10 +222,10 @@ a:-webkit-any-link {
     width:280px;
     min-height:300px;
     position:absolute;
-    top:20%;
-    left:60%;
+    top:15%;
+    left:62%;
     background-color:#fff;
-    padding:0 26px;
+    padding:0 26px 10px 26px;
 }
 .login-form-title span{
     display: block;
@@ -222,5 +235,11 @@ a:-webkit-any-link {
 }
 .el-form-item--medium{
     margin:15px 0;
+}
+hr {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
 }
 </style>
